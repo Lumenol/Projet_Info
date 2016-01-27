@@ -3,16 +3,17 @@ package prototype;
 public class Partie {
     public Partie() {
 	Grille grille = new Grille(5);
-	AbstractJoueur js[] = new AbstractJoueur[2];
-	js[0] = new Joueur(1);
-	// js[0] = new JoueurSimplet(1);
-	js[1] = new JoueurSimplet(2);
+	Joueur js[] = new Joueur[2];
+	js[0] = new Humain();
+	// js[0] = new Simplet();
+	js[1] = new Simplet();
 	int j = 0;
 	while (!grille.isPlein()) {
 	    System.out.println(grille);
-	    js[j].jouer(grille);
-	    j = (j + 1) % 2;
+	    if (!js[j].jouer(grille))
+		j = (j + 1) % 2;
 	}
 	System.out.println(grille);
+	System.out.println("J1=" + js[0].points + "\tJ2=" + js[1].points);
     }
 }

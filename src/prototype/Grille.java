@@ -1,6 +1,10 @@
 package prototype;
 
 public class Grille {
+    public static final int VIDE = 0;
+    public static final int BLOQUE = 1;
+    public static final int JOUE = 2;
+
     public int[][] grille;
 
     public Grille(int n) {
@@ -8,63 +12,18 @@ public class Grille {
 	for (int i = 0; i < grille.length; i++) {
 	    for (int j = 0; j < grille.length; j++) {
 		if ((j % 2 == 0) == (i % 2 == 0)) {
-		    grille[i][j] = -1;
+		    grille[i][j] = BLOQUE;
 		} else {
-		    grille[i][j] = 0;
+		    grille[i][j] = VIDE;
 		}
 	    }
 	}
-    }
-
-    public int carreComplete(int x, int y) {
-	int c = 0;
-	int[][] p = { { -1, -1 }, { 0, -2 }, { 1, -1 } };
-	if (y % 2 == 0) {
-	    boolean b = true;
-	    for (int i = 0; i < p.length && b; i++) {
-		int x_ = x + p[i][0];
-		int y_ = y + p[i][1];
-		if (x_ >= 0 && x_ < grille.length && y_ >= 0 && y_ < grille.length) {
-		    b = grille[y_][x_] != 0;
-		}
-	    }
-	    c += b ? 1 : 0;
-	    b = true;
-	    for (int i = 0; i < p.length && b; i++) {
-		int x_ = x - p[i][0];
-		int y_ = y - p[i][1];
-		if (x_ >= 0 && x_ < grille.length && y_ >= 0 && y_ < grille.length) {
-		    b = grille[y_][x_] != 0;
-		}
-	    }
-	    c += b ? 1 : 0;
-	} else {
-	    boolean b = true;
-	    for (int i = 0; i < p.length && b; i++) {
-		int x_ = x + p[i][1];
-		int y_ = y + p[i][0];
-		if (x_ >= 0 && x_ < grille.length && y_ >= 0 && y_ < grille.length) {
-		    b = grille[y_][x_] != 0;
-		}
-	    }
-	    c += b ? 1 : 0;
-	    b = true;
-	    for (int i = 0; i < p.length && b; i++) {
-		int x_ = x - p[i][1];
-		int y_ = y - p[i][0];
-		if (x_ >= 0 && x_ < grille.length && y_ >= 0 && y_ < grille.length) {
-		    b = grille[y_][x_] != 0;
-		}
-	    }
-	    c += b ? 1 : 0;
-	}
-	return c;
     }
 
     public boolean isPlein() {
 	for (int i = 0; i < grille.length; i++) {
 	    for (int j = 0; j < grille.length; j++) {
-		if (grille[i][j] == 0) {
+		if (grille[i][j] == VIDE) {
 		    return false;
 		}
 	    }
@@ -72,25 +31,69 @@ public class Grille {
 	return true;
     }
 
+    public int nombreCarreComplets(int y, int x) {
+	int[][] p;
+	if (y % 2 == 0)
+	    p = new int[][] { { -1, -1 }, { -2, 0 }, { -1, 1 } };
+	else
+	    p = new int[][] { { -1, -1 }, { 0, -2 }, { 1, -1 } };
+	int carre = 0;
+	int i;
+	boolean complet;
+	for (int s = -1; s <= 1; s += 2) {
+	    complet = true;
+	    i = 0;
+	    while (complet && i < p.length) {
+		int y_ = y + s * p[i][0];
+		int x_ = x + s * p[i][1];
+		complet = y_ >= 0 && y_ < grille.length && x_ >= 0 && x_ < grille.length;
+		if (complet)
+		    complet = grille[y_][x_] == JOUE;
+		i++;
+	    }
+	    if (complet)
+		carre++;
+	}
+	return carre;
+    }
+
+    public boolean placer(int y, int x) {
+	if (y >= 0 && y < grille.length && x >= 0 && x < grille.length)
+	    if (grille[y][x] == VIDE) {
+		grille[y][x] = JOUE;
+		return true;
+	    }
+	return false;
+    }
+
     @Override
+
     public String toString() {
-	StringBuffer b = new StringBuffer();
+	StringBuffer sb = new StringBuffer();
 	for (int i = 0; i < grille.length; i++) {
 	    for (int j = 0; j < grille.length; j++) {
 		switch (grille[i][j]) {
-		case -1:
-		    b.append("*");
+		case VIDE:
+		    sb.append(" ");
 		    break;
-		case 0:
-		    b.append(" ");
+		case BLOQUE:
+		    if (i % 2 == 0)
+			sb.append("*");
+		    else
+			sb.append(" ");
 		    break;
-		default:
-		    b.append(grille[i][j]);
+
+		case JOUE:
+		    if (i % 2 == 0)
+			sb.append("-");
+		    else
+			sb.append("|");
+		    break;
 		}
 	    }
-	    b.append("\n");
+	    sb.append("\n");
 	}
-	return b.toString();
-
+	return sb.toString();
     }
+
 }

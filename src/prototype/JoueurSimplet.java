@@ -17,7 +17,7 @@ public class JoueurSimplet extends AbstractJoueur {
 	    int y = rand.nextInt(g.grille.length);
 	    if (g.grille[x][y] == 0) {
 		jouer = true;
-		g.grille[x][y] = numero;
+		g.grille[x][y] = Grille.JOUE;
 	    }
 	}
     }

@@ -20,7 +20,7 @@ public class Joueur extends AbstractJoueur {
 	    int y = sc.nextInt();
 	    if (g.grille[y][x] == 0) {
 		jouer = true;
-		g.grille[y][x] = numero;
+		g.grille[y][x] = Grille.JOUE;
 	    }
 	}
     }

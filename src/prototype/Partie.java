@@ -12,6 +12,7 @@ public class Partie {
 	    System.out.println(grille);
 	    if (!js[j].jouer(grille))
 		j = (j + 1) % 2;
+	    System.out.println("-----------------------------------");
 	}
 	System.out.println(grille);
 	System.out.println("J1=" + js[0].points + "\tJ2=" + js[1].points);

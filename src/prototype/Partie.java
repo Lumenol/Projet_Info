@@ -1,5 +1,7 @@
 package prototype;
 
+import java.awt.Event;
+
 public class Partie {
     public Partie() {
 	Grille grille = new Grille(5, true);
@@ -9,7 +11,7 @@ public class Partie {
 	js[1] = new Simplet();
 	int j = 0;
 	while (!grille.isPlein()) {
-	    System.out.println(grille);
+	    System.out.println((char) Event.ESCAPE + "c" + grille);
 	    if (!js[j].jouer(grille))
 		j = (j + 1) % 2;
 	    System.out.println("-----------------------------------");

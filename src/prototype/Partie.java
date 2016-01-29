@@ -2,7 +2,7 @@ package prototype;
 
 public class Partie {
     public Partie() {
-	Grille grille = new Grille(5);
+	Grille grille = new Grille(5, true);
 	Joueur js[] = new Joueur[2];
 	js[0] = new Humain();
 	// js[0] = new Simplet();

@@ -8,13 +8,20 @@ public class Grille {
     public int[][] grille;
 
     public Grille(int n) {
+	this(n, false);
+    }
+
+    public Grille(int n, boolean contours) {
 	grille = new int[2 * n + 1][2 * n + 1];
 	for (int i = 0; i < grille.length; i++) {
 	    for (int j = 0; j < grille.length; j++) {
 		if ((j % 2 == 0) == (i % 2 == 0)) {
 		    grille[i][j] = BLOQUE;
 		} else {
-		    grille[i][j] = VIDE;
+		    if (contours && (i == 0 || i == grille.length - 1 || j == 0 || j == grille.length - 1))
+			grille[i][j] = JOUE;
+		    else
+			grille[i][j] = VIDE;
 		}
 	    }
 	}

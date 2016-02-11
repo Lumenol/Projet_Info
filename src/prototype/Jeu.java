@@ -13,7 +13,7 @@ public class Jeu {
 		if (a.equals("a")){
 			new Partie();
 		}else{
-			Grille grille = new Grille(2,true);
+			Grille grille = new Grille(8,true);
 
 			ConstructionArbre tree = new ConstructionArbre(grille);
 

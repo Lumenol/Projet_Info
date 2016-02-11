@@ -81,20 +81,20 @@ public class Grille {
 	    for (int j = 0; j < grille.length; j++) {
 		switch (grille[i][j]) {
 		case VIDE:
-		    sb.append(" ");
+		    sb.append("  ");
 		    break;
 		case BLOQUE:
 		    if (i % 2 == 0)
-			sb.append("*");
+			sb.append("* ");
 		    else
-			sb.append(" ");
+			sb.append("  ");
 		    break;
 
 		case JOUE:
 		    if (i % 2 == 0)
-			sb.append("-");
+			sb.append("- ");
 		    else
-			sb.append("|");
+			sb.append("| ");
 		    break;
 		}
 	    }

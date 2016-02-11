@@ -1,17 +1,16 @@
 package prototype;
 
-import java.awt.Event;
-
 public class Partie {
     public Partie() {
-	Grille grille = new Grille(5, true);
+	Grille grille = new Grille(3, true);
 	Joueur js[] = new Joueur[2];
 	js[0] = new Humain();
 	// js[0] = new Simplet();
 	js[1] = new Simplet();
 	int j = 0;
 	while (!grille.isPlein()) {
-	    System.out.println((char) Event.ESCAPE + "c" + grille);
+	  //  System.out.println((char) Event.ESCAPE + "c" + grille);
+		System.out.println(grille);
 	    if (!js[j].jouer(grille))
 		j = (j + 1) % 2;
 	}

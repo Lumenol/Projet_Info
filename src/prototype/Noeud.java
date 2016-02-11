@@ -10,11 +10,11 @@ public class Noeud {
 	public Noeud(){
 		parent = null;
 		a = null;
-		listfils = null;
+		listfils = new ArrayList<Noeud>();
 	}
-	public Noeud(Noeud p, Grille a, ArrayList<Noeud> listfils){
+	public Noeud(Noeud p, Grille a){
 		parent = p;
 		this.a = a;
-		this.listfils = listfils;
+		this.listfils = new ArrayList<Noeud>();
 	}
 }

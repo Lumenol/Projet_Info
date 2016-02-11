@@ -2,7 +2,7 @@ package prototype;
 import java.util.Random;
 import java.util.Scanner;
 
-public class jeu {
+public class Jeu {
 
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -35,6 +35,7 @@ public class jeu {
 				System.out.println("FIN");
 		//	}
 		}
+		sc.close();
 	}
 }
 //arbre, graphe, complession, symetrie, etiquettes sur arbres

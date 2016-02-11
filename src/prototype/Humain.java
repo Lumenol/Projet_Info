@@ -22,8 +22,10 @@ public class Humain extends Joueur {
 	    jouer = g.placer(y, x);
 	}
 	int c = g.nombreCarreComplets(y, x);
-	points += c;
+	points += c; 
+	sc.close();
 	return c >= 1;
+   
     }
 
 }

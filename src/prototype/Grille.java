@@ -5,6 +5,25 @@ public class Grille {
     public static final int BLOQUE = 1;
     public static final int JOUE = 2;
 
+    public static int dimmentionGrille(int nbTraits) {
+	int r = 0, n = 0;
+	while ((r = r + 4 * n) < nbTraits) {
+	    n++;
+	}
+	return n;
+    }
+
+    public static int nombreTraitGrille(int n) {
+	return nombreTraitGrille(n, 0);
+    }
+
+    private static int nombreTraitGrille(int n, int r) {
+	if (n == 0)
+	    return r;
+	else
+	    return nombreTraitGrille(n - 1, r + 4 * n);
+    }
+
     public int[][] grille;
 
     public Grille(int n) {
@@ -22,6 +41,23 @@ public class Grille {
 			grille[i][j] = JOUE;
 		    else
 			grille[i][j] = VIDE;
+		}
+	    }
+	}
+    }
+
+    public Grille(int n, int[] tab) throws IllegalArgumentException {
+	if (tab.length != nombreTraitGrille(n))
+	    throw new IllegalArgumentException("Le tableau n'esst pas à la bonne taille pour remplir la grille");
+	grille = new int[2 * n + 1][2 * n + 1];
+	int k = 0;
+	for (int i = 0; i < grille.length; i++) {
+	    for (int j = 0; j < grille.length; j++) {
+		if ((j % 2 == 0) == (i % 2 == 0))
+		    grille[i][j] = BLOQUE;
+		else {
+		    grille[i][j] = tab[k];
+		    k++;
 		}
 	    }
 	}
@@ -76,6 +112,10 @@ public class Grille {
     @Override
 
     public String toString() {
+	return toString(false);
+    }
+
+    public String toString(boolean dot) {
 	StringBuffer sb = new StringBuffer();
 	for (int i = 0; i < grille.length; i++) {
 	    for (int j = 0; j < grille.length; j++) {
@@ -98,7 +138,7 @@ public class Grille {
 		    break;
 		}
 	    }
-	    sb.append("\n");
+	    sb.append(dot ? "\\n" : "\n");
 	}
 	return sb.toString();
     }

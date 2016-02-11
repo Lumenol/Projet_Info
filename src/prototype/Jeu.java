@@ -13,7 +13,9 @@ public class Jeu {
 		if (a.equals("a")){
 			new Partie();
 		}else{
-			Grille grille = new Grille(8,true);
+			System.out.println("Taille de grille :");
+			int taille_de_grille = sc.nextInt();
+			Grille grille = new Grille(taille_de_grille,true);
 
 			ConstructionArbre tree = new ConstructionArbre(grille);
 
@@ -38,4 +40,4 @@ public class Jeu {
 		sc.close();
 	}
 }
-//arbre, graphe, complession, symetrie, etiquettes sur arbres
+//arbre, graphe, completion, symetrie, etiquettes sur arbres

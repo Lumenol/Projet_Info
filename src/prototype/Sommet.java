@@ -1,5 +1,6 @@
 package prototype;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -10,13 +11,15 @@ public class Sommet {
     private Grille grille;
     private int[] tableaeu;
     private int num;
+    private int hash;
 
     public Sommet(int[] grille) {
 	voisin = new LinkedList<Sommet>();
 	tableaeu = grille;
-	this.grille = new Grille(Grille.dimmentionGrille(grille.length), grille);
+	this.grille = new Grille(grille);
 	num = numero;
 	numero++;
+	hash = Arrays.hashCode(grille);
     }
 
     public boolean add(Sommet arg0) {
@@ -29,6 +32,10 @@ public class Sommet {
 
     public int[] getTableaeu() {
 	return tableaeu;
+    }
+
+    public int hashCode() {
+	return hash;
     }
 
     public Iterator<Sommet> iterator() {

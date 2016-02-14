@@ -46,9 +46,8 @@ public class Grille {
 	}
     }
 
-    public Grille(int n, int[] tab) throws IllegalArgumentException {
-	if (tab.length != nombreTraitGrille(n))
-	    throw new IllegalArgumentException("Le tableau n'esst pas à la bonne taille pour remplir la grille");
+    public Grille(int[] tab) throws IllegalArgumentException {
+	int n = dimmentionGrille(tab.length);
 	grille = new int[2 * n + 1][2 * n + 1];
 	int k = 0;
 	for (int i = 0; i < grille.length; i++) {

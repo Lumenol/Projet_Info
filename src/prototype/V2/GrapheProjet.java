@@ -36,7 +36,7 @@ public class GrapheProjet {
     }
 
     public static void main(String[] args) {
-	genererGraphe(3, 3, true, "autre", "png");
+	genererGraphe(3, 3, true, "autre", "pdf");
     }
 
 }

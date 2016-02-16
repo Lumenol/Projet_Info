@@ -12,15 +12,33 @@ public class Graph implements Graphe {
 
     List<Sommet> sommet;
 
-    public Graph(int n) {
+    public Graph(int n, boolean entoure) {
 	sommet = new LinkedList<Sommet>();
 	int[] tab = new int[Grille.nombreTraitGrille(n)];
 	Arrays.fill(tab, Grille.VIDE);
+	if (entoure) {
+	    int j = 0;
+	    boolean cn = true;
+	    for (int i = 0; i < tab.length; i++) {
+		if (i < n || i > tab.length - 1 - n || j == n) {
+		    if (j == n) {
+			if (cn)
+			    j = 0;
+			else
+			    j = -1;
+			cn = !cn;
+		    }
+		    tab[i] = Grille.JOUE;
+		}
+		j++;
+	    }
+	}
 	Config racine = new Config(tab);
 	sommet.add(racine);
 	LinkedList<Integer> l = new LinkedList<Integer>();
 	for (int i = 0; i < tab.length; i++) {
-	    l.add(i);
+	    if (tab[i] == Grille.VIDE)
+		l.add(i);
 	}
 	generer(racine, l);
     }
@@ -73,4 +91,5 @@ public class Graph implements Graphe {
 	}
 
     }
+
 }

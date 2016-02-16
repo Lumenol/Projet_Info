@@ -37,8 +37,6 @@ public class Config implements Sommet {
 	if (getClass() != obj.getClass())
 	    return false;
 	Config other = (Config) obj;
-	if (Arrays.equals(tableaeu, other.tableaeu))
-	    return true;
 	return rotation(other);
     }
 
@@ -77,9 +75,8 @@ public class Config implements Sommet {
     private boolean rotation(Config c) {
 	int[][] t1 = grille.grille;
 	int[][] t2 = new int[t1.length][t1.length];
-	if (symétrique(t1, c.grille.grille))
-	    return true;
-	for (int x = 0; x < 3; x++) {
+
+	for (int x = 0; x < 4; x++) {
 	    for (int i = 0; i < t1.length; i++) {
 		for (int j = 0; j < t1.length; j++) {
 		    t2[j][t1.length - 1 - i] = t1[i][j];
@@ -101,6 +98,7 @@ public class Config implements Sommet {
     }
 
     private boolean symétrique(int[][] t1, int[][] c) {
+	// droite gauche
 	int[][] t2 = new int[t1.length][t1.length];
 	for (int i = 0; i < t1.length; i++) {
 	    for (int j = 0; j < t1.length; j++) {
@@ -109,6 +107,7 @@ public class Config implements Sommet {
 	}
 	if (Arrays.deepEquals(t2, c))
 	    return true;
+	// haut bas
 	for (int i = 0; i < t1.length; i++) {
 	    for (int j = 0; j < t1.length; j++) {
 		t2[i][j] = t1[t1.length - 1 - i][j];

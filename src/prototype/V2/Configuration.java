@@ -49,7 +49,7 @@ public class Configuration extends Grille implements Sommet {
 	// TODO Auto-generated method stub
 	if (super.equals(obj))
 	    return true;
-	return isRotation((Configuration) obj);
+	return isSimilaire((Configuration) obj);
     }
 
     @Override
@@ -71,7 +71,7 @@ public class Configuration extends Grille implements Sommet {
 	return sb.toString();
     }
 
-    private boolean isRotation(Configuration c) {
+    private boolean isSimilaire(Configuration c) {
 	int[][] r = getGrille();
 	for (int i = 0; i < 4; i++) {
 	    if (Arrays.deepEquals(r, c.grille))

@@ -13,8 +13,13 @@ import prototype.graphe.Sommet;
 public class Graph implements Graphe {
 
     List<Sommet> sommet;
+    int hauteur, largeur;
+    boolean bord;
 
     public Graph(int h, int l, boolean contoure) {
+	hauteur = h;
+	largeur = l;
+	bord = contoure;
 	sommet = new LinkedList<Sommet>();
 	Configuration racine = new Configuration(h, l, contoure);
 	// System.out.println(racine.nom());
@@ -35,7 +40,7 @@ public class Graph implements Graphe {
 		return false;
 	    }
 	}
-	System.out.println(s.nom());
+	// System.out.println(s.nom());
 	return sommet.add(s);
     }
 
@@ -47,6 +52,10 @@ public class Graph implements Graphe {
     @Override
     public String toDot() {
 	StringBuffer sb = new StringBuffer("digraph default{");
+	sb.append("graph[labelloc=\"t\" fontsize=16 fontcolor=\"blue\"\n");
+	sb.append("label=\"Graphe " + hauteur + "x" + largeur + " " + (bord ? "avec" : "sans") + " bord\"]\n\n");
+	sb.append("node [shape=box fontname = \"Courier New\" color=\"sienna\"]\n");
+	sb.append("edge [fontname = \"Times\" fontcolor=\"sienna\"]\n\n");
 	for (Iterator iterator = sommet.iterator(); iterator.hasNext();) {
 	    Sommet sommet2 = (Sommet) iterator.next();
 	    sb.append(sommet2.toDot() + "\n");

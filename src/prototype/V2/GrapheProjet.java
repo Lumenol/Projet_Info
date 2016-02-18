@@ -11,11 +11,14 @@ public class GrapheProjet {
 
 	Graph a = new Graph(hauteur, largeur, bord);
 
+	(new File(dossier)).mkdirs();
+
 	String fileName = dossier + "/Graphe_" + hauteur + "x" + largeur + "_" + (bord ? "avec" : "sans") + "_bord";
+
 	try {
 	    FileWriter fw = new FileWriter(fileName + ".dot");
 	    fw.write(a.toDot());
-	    System.out.println("OK");
+	    System.out.println(".dot OK");
 	    fw.close();
 	} catch (IOException e) {
 	    // TODO Auto-generated catch block
@@ -36,7 +39,7 @@ public class GrapheProjet {
     }
 
     public static void main(String[] args) {
-	genererGraphe(3, 3, true, "autre", "pdf");
+	genererGraphe(4, 4, true, "autre/Graphe", "png");
     }
 
 }

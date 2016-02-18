@@ -18,13 +18,13 @@ public class Configuration extends Grille implements Sommet {
 	grille = g.getGrille();
     }
 
-    public Configuration(int dimention) {
-	this(dimention, true);
+    public Configuration(int dimension) {
+	this(dimension, true);
 	// TODO Auto-generated constructor stub
     }
 
-    public Configuration(int dimention, boolean contoure) {
-	this(dimention, dimention, contoure);
+    public Configuration(int dimension, boolean contoure) {
+	this(dimension, dimension, contoure);
 	// TODO Auto-generated constructor stub
     }
 

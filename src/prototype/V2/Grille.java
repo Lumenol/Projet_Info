@@ -28,12 +28,12 @@ public class Grille {
 
     protected int[][] grille;
 
-    public Grille(int dimention) {
-	this(dimention, true);
+    public Grille(int dimension) {
+	this(dimension, true);
     }
 
-    public Grille(int dimention, boolean contoure) {
-	this(dimention, dimention, contoure);
+    public Grille(int dimension, boolean contoure) {
+	this(dimension, dimension, contoure);
     }
 
     public Grille(int hauteur, int largeur) {

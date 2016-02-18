@@ -1,0 +1,12 @@
+digraph default{graph[labelloc="t" fontsize=16 fontcolor="blue"
+label="Graphe 2x2 avec bord"]
+
+node [shape=box fontname = "Courier New" color="sienna"]
+edge [fontname = "Times" fontcolor="sienna"]
+
+0 [label=".-.-.\n|   |\n. . .\n|   |\n.-.-.\n"]
+0 -> 2
+
+2 [label=".-.-.\n| | |\n.-.-.\n| | |\n.-.-.\n"]
+
+}

@@ -81,6 +81,7 @@ public class Graph implements Graphe {
 		    s.addFil(s2);
 		    generer(s2);
 		}
+
 		s1.grille = h;
 	    }
 	}

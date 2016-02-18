@@ -39,7 +39,7 @@ public class GrapheProjet {
     }
 
     public static void main(String[] args) {
-	genererGraphe(4, 4, true, "autre/Graphe", "png");
+	genererGraphe(3, 3, true, "autre/Graphe", "png");
     }
 
 }

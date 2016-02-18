@@ -3,7 +3,7 @@ package prototype.graphe;
 import java.util.Iterator;
 
 public interface Sommet {
-    boolean addFil(Sommet s);
+    void addFil(Sommet s);
 
     Iterator<Sommet> iterator();
 

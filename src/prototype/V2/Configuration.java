@@ -1,16 +1,16 @@
 package prototype.V2;
 
 import java.util.Arrays;
-import java.util.HashSet;
+import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Set;
+import java.util.Map.Entry;
 
 import prototype.graphe.Sommet;
 
 public class Configuration extends Grille implements Sommet {
 
     private static int num = 0;
-    Set<Sommet> fils = new HashSet<Sommet>();
+    HashMap<Sommet, Integer> fils = new HashMap<Sommet, Integer>();
     int nom;
 
     public Configuration(Grille g) {
@@ -40,8 +40,13 @@ public class Configuration extends Grille implements Sommet {
     }
 
     @Override
-    public boolean addFil(Sommet s) {
-	return fils.add(s);
+    public void addFil(Sommet s) {
+	Integer r = fils.get(s);
+	if (r == null)
+	    fils.put(s, 1);
+	else
+	    fils.put(s, r + 1);
+
     }
 
     @Override
@@ -54,7 +59,7 @@ public class Configuration extends Grille implements Sommet {
 
     @Override
     public Iterator<Sommet> iterator() {
-	return fils.iterator();
+	return fils.keySet().iterator();
     }
 
     @Override
@@ -64,9 +69,10 @@ public class Configuration extends Grille implements Sommet {
 
     public String toDot() {
 	StringBuffer sb = new StringBuffer(nom() + " [label=\"" + super.toDot() + "\"]\n");
-	for (Iterator iterator = fils.iterator(); iterator.hasNext();) {
-	    Sommet sommet = (Sommet) iterator.next();
-	    sb.append(nom() + " -> " + sommet.nom() + "\n");
+	for (Iterator iterator = fils.entrySet().iterator(); iterator.hasNext();) {
+	    Entry sommet = (Entry) iterator.next();
+	    sb.append(nom() + " -> " + ((Sommet) sommet.getKey()).nom() + " [taillabel=\"" + sommet.getValue() + "\"]"
+		    + "\n");
 	}
 	return sb.toString();
     }

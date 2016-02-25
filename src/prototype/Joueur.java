@@ -9,4 +9,6 @@ public abstract class Joueur {
     }
 
     public abstract boolean jouer(Grille g);
+
+    public abstract boolean jouer(prototype.V2.Grille g);
 }

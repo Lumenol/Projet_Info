@@ -22,10 +22,10 @@ public class Grille {
     }
 
     public static final int VIDE = 0;
-    public static final int BLOQUE = 1;
 
-    public static final int JOUE = 2;
+    public static final int BLOQUE = 2;
 
+    public static final int JOUE = 1;
     protected int[][] grille;
 
     public Grille(int dimension) {
@@ -53,6 +53,27 @@ public class Grille {
 			grille[i][j] = JOUE;
 		    else
 			grille[i][j] = VIDE;
+		}
+	    }
+	}
+    }
+
+    public Grille(int hauteur, int largeur, boolean contoure, Integer[] t) {
+	hauteur = hauteur <= 0 ? 1 : hauteur;
+	largeur = largeur <= 0 ? 1 : largeur;
+	grille = new int[2 * hauteur + 1][2 * largeur + 1];
+	int k = 0;
+	for (int i = 0; i < grille.length; i++) {
+	    for (int j = 0; j < grille[0].length; j++) {
+		if ((j % 2 == 0) == (i % 2 == 0)) {
+		    grille[i][j] = BLOQUE;
+		} else {
+		    if (contoure && (i == 0 || i == grille.length - 1 || j == 0 || j == grille[0].length - 1))
+			grille[i][j] = JOUE;
+		    else {
+			grille[i][j] = t[k];
+			k++;
+		    }
 		}
 	    }
 	}
@@ -91,6 +112,10 @@ public class Grille {
 	return result;
     }
 
+    public int hauteur() {
+	return grille.length;
+    }
+
     public boolean isComplet() {
 	return jouable().size() == 0;
     }
@@ -120,6 +145,10 @@ public class Grille {
 	int points = nombreCarreComplets(p);
 	grille[(int) p.getY()][(int) p.getX()] = JOUE;
 	return points;
+    }
+
+    public int largeur() {
+	return grille[0].length;
     }
 
     public int nombreCarreComplets(Point p) {

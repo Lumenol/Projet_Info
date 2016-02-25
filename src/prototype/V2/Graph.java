@@ -1,19 +1,85 @@
 package prototype.V2;
 
 import java.awt.Point;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.SortedMap;
+import java.util.StringTokenizer;
 
 import prototype.graphe.Graphe;
 import prototype.graphe.Sommet;
 
 public class Graph implements Graphe {
 
+    public static Graph graphFromPip(File pip) throws FileNotFoundException {
+	BufferedReader br = new BufferedReader(new FileReader(pip));
+	Graph g = null;
+	try {
+	    StringTokenizer tok = new StringTokenizer(br.readLine(), " ");
+	    boolean contoure = tok.nextToken().equalsIgnoreCase("C");
+	    int h = Integer.parseInt(tok.nextToken());
+	    int l = Integer.parseInt(tok.nextToken());
+	    System.out.println(h + "\t" + l + "\t" + contoure);
+	    g = new Graph(h, l, contoure);
+	    String s;
+	    while ((s = br.readLine()) != null) {
+		System.out.println(s);
+		tok = new StringTokenizer(s, " ");
+		Integer[] t = pipToTab(tok.nextToken());
+		int p = Integer.parseInt(tok.nextToken());
+		Configuration c = new Configuration(h, l, contoure, t, p);
+		System.out.println(c);
+		System.out.println(g.setPoids(c));
+	    }
+	} catch (IOException e) {
+
+	}
+	return g;
+
+    }
+
+    public static void jouer(Configuration c) {
+	int point = 1;
+	while (point > 0 && !c.isComplet()) {
+
+	    SortedMap<Integer, ArrayList<Point>> jouable = c.jouable();
+	    if (jouable.lastKey() >= 1) {
+		ArrayList<Point> points = jouable.get(jouable.lastKey());
+		c.jouer(points.get(0));
+	    } else {
+		point = 0;
+	    }
+	}
+    }
+
+    private static Integer[] pipToTab(String s) {
+	ArrayList<Integer> a = new ArrayList<Integer>();
+	for (int i = 0; i < s.length(); i++) {
+	    switch (s.charAt(i)) {
+	    case '0':
+		a.add(Grille.VIDE);
+		break;
+	    case '1':
+		a.add(Grille.JOUE);
+		break;
+	    }
+	}
+	Integer[] r = new Integer[a.size()];
+	a.toArray(r);
+	return r;
+    }
+
     List<Sommet> sommet;
+
     int hauteur, largeur;
+
     boolean bord;
 
     public Graph(int h, int l, boolean contoure) {
@@ -42,6 +108,15 @@ public class Graph implements Graphe {
 	}
 	// System.out.println(s.nom());
 	return sommet.add(s);
+    }
+
+    public Configuration get(Configuration c) {
+	for (Iterator iterator = sommet.iterator(); iterator.hasNext();) {
+	    Sommet sommet2 = (Sommet) iterator.next();
+	    if (c.equals(sommet2))
+		return (Configuration) sommet2;
+	}
+	return null;
     }
 
     @Override
@@ -88,18 +163,15 @@ public class Graph implements Graphe {
 
     }
 
-    private void jouer(Configuration c) {
-	int point = 1;
-	while (point > 0 && !c.isComplet()) {
-
-	    SortedMap<Integer, ArrayList<Point>> jouable = c.jouable();
-	    if (jouable.lastKey() >= 1) {
-		ArrayList<Point> points = jouable.get(jouable.lastKey());
-		c.jouer(points.get(0));
-	    } else {
-		point = 0;
+    private boolean setPoids(Configuration c) {
+	for (Iterator iterator = sommet.iterator(); iterator.hasNext();) {
+	    Configuration configuration = (Configuration) iterator.next();
+	    if (configuration.equals(c)) {
+		configuration.V = c.V;
+		return true;
 	    }
 	}
+	return false;
     }
 
 }

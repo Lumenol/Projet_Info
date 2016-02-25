@@ -1,6 +1,9 @@
 package prototype.V2;
 
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map.Entry;
@@ -12,6 +15,8 @@ public class Configuration extends Grille implements Sommet {
     private static int num = 0;
     HashMap<Sommet, Integer> fils = new HashMap<Sommet, Integer>();
     int nom;
+
+    public int V;
 
     public Configuration(Grille g) {
 	nom = num++;
@@ -36,7 +41,13 @@ public class Configuration extends Grille implements Sommet {
     public Configuration(int hauteur, int largeur, boolean contoure) {
 	super(hauteur, largeur, contoure);
 	nom = num++;
+	V = 0;
 	// TODO Auto-generated constructor stub
+    }
+
+    public Configuration(int hauteur, int largeur, boolean contoure, Integer[] t, int p) {
+	super(hauteur, largeur, contoure, t);
+	V = p;
     }
 
     @Override
@@ -57,6 +68,29 @@ public class Configuration extends Grille implements Sommet {
 	return isSimilaire((Configuration) obj);
     }
 
+    public ArrayList<Configuration> filsPoidsMin() {
+
+	int min = ((Configuration) Collections.min(fils.keySet(), new Comparator<Sommet>() {
+
+	    @Override
+	    public int compare(Sommet o1, Sommet o2) {
+
+		return Integer.compare(((Configuration) o1).V, ((Configuration) o2).V);
+	    }
+
+	})).V;
+	ArrayList<Configuration> r = new ArrayList<>();
+	for (Iterator iterator = fils.keySet().iterator(); iterator.hasNext();) {
+	    Configuration configuration = (Configuration) iterator.next();
+	    if (configuration.V == min) {
+		r.add(configuration);
+	    }
+	}
+
+	return r;
+
+    }
+
     @Override
     public Iterator<Sommet> iterator() {
 	return fils.keySet().iterator();
@@ -68,7 +102,7 @@ public class Configuration extends Grille implements Sommet {
     }
 
     public String toDot() {
-	StringBuffer sb = new StringBuffer(nom() + " [label=\"" + super.toDot() + "\"]\n");
+	StringBuffer sb = new StringBuffer(nom() + " [label=\"V=" + V + "\\n" + super.toDot() + "\"]\n");
 	for (Iterator iterator = fils.entrySet().iterator(); iterator.hasNext();) {
 	    Entry sommet = (Entry) iterator.next();
 	    sb.append(nom() + " -> " + ((Sommet) sommet.getKey()).nom() + " [taillabel=\"" + sommet.getValue() + "\"]"

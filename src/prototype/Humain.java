@@ -1,5 +1,6 @@
 package prototype;
 
+import java.awt.Point;
 import java.util.Scanner;
 
 public class Humain extends Joueur {
@@ -22,10 +23,28 @@ public class Humain extends Joueur {
 	    jouer = g.placer(y, x);
 	}
 	int c = g.nombreCarreComplets(y, x);
-	points += c; 
+	points += c;
 	sc.close();
 	return c >= 1;
-   
+
+    }
+
+    @Override
+    public boolean jouer(prototype.V2.Grille g) {
+	Scanner sc = new Scanner(System.in);
+	Point p;
+	int x = 0, y = 0;
+	do {
+	    System.out.println("x");
+	    x = sc.nextInt();
+	    System.out.println("y");
+	    y = sc.nextInt();
+	    p = new Point(x, y);
+	} while (!g.isJouable(p));
+	int c = g.jouer(p);
+	points += c;
+	// sc.close();
+	return c >= 1;
     }
 
 }

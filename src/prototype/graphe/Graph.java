@@ -77,7 +77,7 @@ public class Graph implements Graphe {
 	ListIterator<Integer> it = l.listIterator();
 	while (it.hasNext()) {
 	    Integer type = it.next();
-	    int[] t = Arrays.copyOf(s.getTableaeu(), s.getTableaeu().length);
+	    int[] t = Arrays.copyOf(s.getTableau(), s.getTableau().length);
 	    t[type] = Grille.JOUE;
 
 	    it.remove();

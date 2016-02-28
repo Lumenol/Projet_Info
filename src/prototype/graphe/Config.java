@@ -14,12 +14,12 @@ public class Config implements Sommet {
     Set<Sommet> fils = new HashSet<Sommet>();
 
     Grille grille;
-    int[] tableaeu;
+    int[] tableau;
     int nom;
 
     public Config(int[] tab) {
 	nom = num++;
-	tableaeu = Arrays.copyOf(tab, tab.length);
+	tableau = Arrays.copyOf(tab, tab.length);
 	grille = new Grille(tab);
     }
 
@@ -40,15 +40,15 @@ public class Config implements Sommet {
 	return rotation(other);
     }
 
-    public int[] getTableaeu() {
-	return tableaeu;
+    public int[] getTableau() {
+	return tableau;
     }
 
     @Override
     public int hashCode() {
 	final int prime = 31;
 	int result = 1;
-	result = prime * result + Arrays.hashCode(tableaeu);
+	result = prime * result + Arrays.hashCode(tableau);
 	return result;
     }
 
@@ -85,7 +85,7 @@ public class Config implements Sommet {
 	    if (Arrays.deepEquals(t2, c.grille.grille)) {
 		return true;
 	    }
-	    if (symétrique(t2, c.grille.grille))
+	    if (symetrique(t2, c.grille.grille))
 		return true;
 	    t1 = t2;
 	    t2 = new int[t1.length][t1.length];
@@ -93,11 +93,11 @@ public class Config implements Sommet {
 	return false;
     }
 
-    private boolean symétrique(Config c) {
-	return symétrique(grille.grille, c.grille.grille);
+    private boolean symetrique(Config c) {
+	return symetrique(grille.grille, c.grille.grille);
     }
 
-    private boolean symétrique(int[][] t1, int[][] c) {
+    private boolean symetrique(int[][] t1, int[][] c) {
 	// droite gauche
 	int[][] t2 = new int[t1.length][t1.length];
 	for (int i = 0; i < t1.length; i++) {

@@ -24,8 +24,8 @@ public class Config implements Sommet {
     }
 
     @Override
-    public boolean addFil(Sommet s) {
-	return fils.add(s);
+    public void addFil(Sommet s) {
+	fils.add(s);
     }
 
     @Override

@@ -8,4 +8,6 @@ public interface Graphe {
     Iterator<Sommet> iterator();
 
     String toDot();
+
+    String toPip();
 }

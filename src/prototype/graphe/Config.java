@@ -72,6 +72,12 @@ public class Config implements Sommet {
 	return sb.toString();
     }
 
+    @Override
+    public String toPip() {
+	// TODO Auto-generated method stub
+	return null;
+    }
+
     private boolean rotation(Config c) {
 	int[][] t1 = grille.grille;
 	int[][] t2 = new int[t1.length][t1.length];

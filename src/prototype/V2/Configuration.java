@@ -16,11 +16,13 @@ public class Configuration extends Grille implements Sommet {
     HashMap<Sommet, Integer> fils = new HashMap<Sommet, Integer>();
     int nom;
 
-    public int V;
+    public double V = Double.NaN;
 
     public Configuration(Grille g) {
 	nom = num++;
 	grille = g.getGrille();
+	setPoints(g.getPoints());
+	bord = g.bord;
     }
 
     public Configuration(int dimension) {
@@ -41,13 +43,12 @@ public class Configuration extends Grille implements Sommet {
     public Configuration(int hauteur, int largeur, boolean contoure) {
 	super(hauteur, largeur, contoure);
 	nom = num++;
-	V = 0;
 	// TODO Auto-generated constructor stub
     }
 
-    public Configuration(int hauteur, int largeur, boolean contoure, Integer[] t, int p) {
+    public Configuration(int hauteur, int largeur, boolean contoure, Integer[] t, double v) {
 	super(hauteur, largeur, contoure, t);
-	V = p;
+	V = v;
     }
 
     @Override
@@ -70,12 +71,12 @@ public class Configuration extends Grille implements Sommet {
 
     public ArrayList<Configuration> filsPoidsMin() {
 
-	int min = ((Configuration) Collections.min(fils.keySet(), new Comparator<Sommet>() {
+	double min = ((Configuration) Collections.min(fils.keySet(), new Comparator<Sommet>() {
 
 	    @Override
 	    public int compare(Sommet o1, Sommet o2) {
 
-		return Integer.compare(((Configuration) o1).V, ((Configuration) o2).V);
+		return Double.compare(((Configuration) o1).V, ((Configuration) o2).V);
 	    }
 
 	})).V;
@@ -91,6 +92,23 @@ public class Configuration extends Grille implements Sommet {
 
     }
 
+    public double getPoids() {
+	if (Double.compare(V, Double.NaN) == 0) {
+	    if (fils.isEmpty()) {
+		V = 0.;
+	    } else {
+		Iterator<Sommet> it = fils.keySet().iterator();
+		Configuration next = (Configuration) it.next();
+		V = getPoints() - next.getPoints() - next.getPoids();
+		while (it.hasNext()) {
+		    Configuration sommet = (Configuration) it.next();
+		    V = Math.max(V, getPoints() - sommet.getPoints() - sommet.getPoids());
+		}
+	    }
+	}
+	return V;
+    }
+
     @Override
     public Iterator<Sommet> iterator() {
 	return fils.keySet().iterator();
@@ -102,12 +120,46 @@ public class Configuration extends Grille implements Sommet {
     }
 
     public String toDot() {
-	StringBuffer sb = new StringBuffer(nom() + " [label=\"V=" + V + "\\n" + super.toDot() + "\"]\n");
+	StringBuffer sb = new StringBuffer(nom() + " [label=\"V=" + getPoids() + "\\n" + super.toDot() + "\"]\n");
 	for (Iterator iterator = fils.entrySet().iterator(); iterator.hasNext();) {
 	    Entry sommet = (Entry) iterator.next();
 	    sb.append(nom() + " -> " + ((Sommet) sommet.getKey()).nom() + " [taillabel=\"" + sommet.getValue() + "\"]"
 		    + "\n");
 	}
+	return sb.toString();
+    }
+
+    @Override
+    public String toPip() {
+	int i, j, h, l;
+	if (bord) {
+	    i = 1;
+	    j = 1;
+	    h = hauteur() - 1;
+	    l = largeur() - 1;
+	} else {
+	    i = 0;
+	    j = 0;
+	    h = hauteur();
+	    l = largeur();
+	}
+	StringBuffer sb = new StringBuffer();
+	for (int i_ = i; i_ < h; i_++) {
+	    for (int j_ = j; j_ < l; j_++) {
+		switch (grille[i_][j_]) {
+		case JOUE:
+		    sb.append("1");
+		    break;
+		case VIDE:
+		    sb.append("0");
+		    break;
+		}
+	    }
+	    if (i_ < h - 1)
+		sb.append(".");
+	}
+	sb.append(" " + getPoids());
+
 	return sb.toString();
     }
 

@@ -26,6 +26,10 @@ public class Grille {
     public static final int BLOQUE = 2;
 
     public static final int JOUE = 1;
+
+    protected boolean bord;
+
+    private int points = -1;
     protected int[][] grille;
 
     public Grille(int dimension) {
@@ -43,6 +47,7 @@ public class Grille {
     public Grille(int hauteur, int largeur, boolean contoure) {
 	hauteur = hauteur <= 0 ? 1 : hauteur;
 	largeur = largeur <= 0 ? 1 : largeur;
+	bord = contoure;
 	grille = new int[2 * hauteur + 1][2 * largeur + 1];
 	for (int i = 0; i < grille.length; i++) {
 	    for (int j = 0; j < grille[0].length; j++) {
@@ -61,6 +66,7 @@ public class Grille {
     public Grille(int hauteur, int largeur, boolean contoure, Integer[] t) {
 	hauteur = hauteur <= 0 ? 1 : hauteur;
 	largeur = largeur <= 0 ? 1 : largeur;
+	bord = contoure;
 	grille = new int[2 * hauteur + 1][2 * largeur + 1];
 	int k = 0;
 	for (int i = 0; i < grille.length; i++) {
@@ -117,7 +123,7 @@ public class Grille {
     }
 
     public boolean isComplet() {
-	return jouable().size() == 0;
+	return jouable().isEmpty();
     }
 
     public boolean isJouable(Point p) {
@@ -144,6 +150,7 @@ public class Grille {
 	    return -1;
 	int points = nombreCarreComplets(p);
 	grille[(int) p.getY()][(int) p.getX()] = JOUE;
+	this.points += points;
 	return points;
     }
 
@@ -213,6 +220,14 @@ public class Grille {
 	    sb.append(toDot ? "\\n" : "\n");
 	}
 	return sb.toString();
+    }
+
+    protected int getPoints() {
+	return points;
+    }
+
+    protected void setPoints(int points) {
+	this.points = points;
     }
 
 }

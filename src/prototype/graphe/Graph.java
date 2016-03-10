@@ -73,6 +73,11 @@ public class Graph implements Graphe {
 	return sb.toString();
     }
 
+    @Override
+    public String toPip() {
+	return null;
+    }
+
     private void generer(Config s, LinkedList<Integer> l) {
 	ListIterator<Integer> it = l.listIterator();
 	while (it.hasNext()) {

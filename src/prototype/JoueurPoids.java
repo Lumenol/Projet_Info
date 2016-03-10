@@ -21,7 +21,8 @@ public class JoueurPoids extends Joueur {
 	try {
 	    Graph g = Graph.graphFromPip(new File("autre/C3x3.pip"));
 
-	    System.out.println(g.toDot());
+	    // System.out.println(g.toDot());
+	    System.out.println(g.toPip());
 	} catch (FileNotFoundException e) {
 	    // TODO Auto-generated catch block
 	    e.printStackTrace();

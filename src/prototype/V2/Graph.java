@@ -139,6 +139,23 @@ public class Graph implements Graphe {
 	return sb.toString();
     }
 
+    @Override
+    public String toPip() {
+	// TODO Auto-generated method stub
+	StringBuffer sb = new StringBuffer();
+	if (bord)
+	    sb.append("C");
+	else
+	    sb.append("N");
+	sb.append(" " + hauteur + " " + largeur + "\n");
+	Iterator<Sommet> it = sommet.iterator();
+	while (it.hasNext()) {
+	    Sommet sommet = it.next();
+	    sb.append(sommet.toPip() + "\n");
+	}
+	return sb.toString();
+    }
+
     private void generer(Configuration s) {
 	Configuration s1 = new Configuration(s);
 	// System.out.println(s1);

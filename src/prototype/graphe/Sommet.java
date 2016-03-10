@@ -10,4 +10,6 @@ public interface Sommet {
     String nom();
 
     String toDot();
+
+    String toPip();
 }

@@ -9,7 +9,15 @@ public class GrapheProjet {
 
     public static void genererGraphe(int hauteur, int largeur, boolean bord, String dossier, String format) {
 
-	Graph a = new Graph(hauteur, largeur, bord);
+	Graph a = null;
+
+	a = new Graph(hauteur, largeur, bord);
+	// try {
+	// a = Graph.graphFromPip(new File("autre/C3x3.pip"));
+	// } catch (FileNotFoundException e1) {
+	// // TODO Auto-generated catch block
+	// e1.printStackTrace();
+	// }
 
 	(new File(dossier)).mkdirs();
 

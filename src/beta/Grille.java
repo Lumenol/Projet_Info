@@ -2,7 +2,7 @@ package beta;
 /**
  * 
  * @author Julie
- *
+ * 
  */
 public class Grille {
 final static int BLOQUE=1;

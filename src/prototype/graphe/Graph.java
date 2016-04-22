@@ -1,17 +1,13 @@
 package prototype.graphe;
-
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.ListIterator;
-
 import prototype.Grille;
 
 public class Graph implements Graphe {
-
     List<Sommet> sommet;
-
     public Graph(int n, boolean entoure) {
 	sommet = new LinkedList<Sommet>();
 	int[] tab = new int[Grille.nombreTraitGrille(n)];
@@ -61,7 +57,6 @@ public class Graph implements Graphe {
     public Iterator<Sommet> iterator() {
 	return sommet.iterator();
     }
-
     @Override
     public String toDot() {
 	StringBuffer sb = new StringBuffer("digraph default{");
@@ -72,12 +67,10 @@ public class Graph implements Graphe {
 	sb.append("}");
 	return sb.toString();
     }
-
     @Override
     public String toPip() {
 	return null;
     }
-
     private void generer(Config s, LinkedList<Integer> l) {
 	ListIterator<Integer> it = l.listIterator();
 	while (it.hasNext()) {

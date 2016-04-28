@@ -8,7 +8,7 @@ public class NombreCarre extends FonctionDynamique<Grille, Integer> {
 	    @Override
 	    public Integer get(Grille x) {
 		int nbCarre = 0;
-		int[][] t = { { -1, -1 }, { -2, 0 }, { -1, 1 } };
+		int[][] t = { { 0, 0 }, { 1, 1 }, { 2, 0 }, { 1, -1 } };
 		for (int i = 1; i < x.largeur(); i += 2) {
 		    for (int j = 0; j < x.hauteur() - 2; j += 2) {
 			boolean complet = true;

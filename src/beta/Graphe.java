@@ -6,3 +6,5 @@ public Sommet<I> chercher(I s);
 public Iterable<Sommet<I>> getSommet();
 public String toDot();
 }
+
+//Archi graphe, to Dot, strategie

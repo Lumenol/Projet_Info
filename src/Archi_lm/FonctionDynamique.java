@@ -20,4 +20,8 @@ public class FonctionDynamique<E, F> implements Fonction<E, F> {
 	return v;
     }
 
+    public F put(E key, F value) {
+	return memoire.put(key, value);
+    }
+
 }

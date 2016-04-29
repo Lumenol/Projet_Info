@@ -1,5 +1,7 @@
 package betaplusplus;
 
+import java.util.Arrays;
+
 /**
  *
  * @author Julie
@@ -10,6 +12,18 @@ public class Grille implements Etat {
     final static int JOUER = 2;
     final static int VIDE = 0;
     private int[][] grille;
+
+    public Grille() {
+	// TODO Auto-generated constructor stub
+    }
+
+    public Grille(Grille g) {
+	this();
+	grille = Arrays.copyOf(g.grille, g.grille.length);
+	for (int i = 0; i < g.largeur(); i++) {
+	    grille[i] = Arrays.copyOf(g.grille[i], g.grille[i].length);
+	}
+    }
 
     @Override
     public boolean equals(Object obj) {

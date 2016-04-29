@@ -45,7 +45,13 @@ public class Grille implements Etat {
     }
 
     public boolean isPlein() {
-	return false;
+	for (int i = 0; i < grille.length; i++) {
+	    for (int j = 0; j < grille[i].length; j++) {
+		if (get(i, j) == VIDE)
+		    return false;
+	    }
+	}
+	return true;
     }
 
     @Override
@@ -64,11 +70,37 @@ public class Grille implements Etat {
     }
 
     public void RempliCarres() {
-
+	for (int i = 0; i < grille.length; i++) {
+	    for (int j = 0; j < grille[i].length; j++) {
+		if (CarreComplet(i, j)) {
+		    placer(i, j);
+		    RempliCarres();
+		    return;
+		}
+	    }
+	}
     }
 
     private boolean CarreComplet(int x, int y) {
-	return true;
+	if (get(x, y) != VIDE) {
+	    return false;
+	}
+	int[][] t;
+	if (y % 2 == 0)
+	    t = new int[][] { { -1, -1 }, { -2, 0 }, { -1, 1 } };
+	else
+	    t = new int[][] { { -1, -1 }, { 0, -2 }, { 1, -1 } };
+	for (int s = -1; s <= 1; s += 2) {
+	    boolean complet = true;
+	    int i = 0;
+	    while (complet && i < t.length) {
+		complet = get(x + s * t[i][0], y + s * t[i][1]) == JOUER;
+	    }
+	    if (complet)
+		return true;
+	}
+	return false;
+
     }
 
 }

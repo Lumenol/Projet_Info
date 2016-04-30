@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class ToDot implements Fonction<Etat, String> {
+public class ToDot<T extends Etat> implements Fonction<T, String> {
 
-    private Fonction<Etat, Iterator<Etat>> succ;
+    private Fonction<T, Iterator<T>> succ;
     private Fonction<Etat, Integer> id;
     private Map<Etat, Boolean> visite;
 
-    public ToDot(Fonction<? extends Etat, Iterator<? extends Etat>> succ) {
+    public ToDot(Fonction<T, Iterator<T>> succ) {
 	super();
 	this.succ = succ;
 	id = new FonctionDynamique<>(new Fonction<Etat, Integer>() {
@@ -28,7 +28,7 @@ public class ToDot implements Fonction<Etat, String> {
     }
 
     @Override
-    public String get(Etat x) {
+    public String get(T x) {
 	StringBuffer sb = new StringBuffer("digraph default{");
 	sb.append("graph[labelloc=\"t\" fontsize=16 fontcolor=\"blue\"\n");
 	sb.append("label=\"Graphe\"]\n");
@@ -39,13 +39,13 @@ public class ToDot implements Fonction<Etat, String> {
 	return sb.toString();
     }
 
-    private String dot(Etat x) {
+    private String dot(T x) {
 	if (!visite.containsKey(x)) {
-	    StringBuffer sb = new StringBuffer(id.get(x));
+	    StringBuffer sb = new StringBuffer(id.get(x).toString());
 	    // inserer representation
 	    sb.append(" [ label= \"" + x.label() + "\"]\n");
-	    for (Iterator<Etat> iterator = succ.get(x); iterator.hasNext();) {
-		Etat fil = iterator.next();
+	    for (Iterator<T> iterator = succ.get(x); iterator.hasNext();) {
+		T fil = iterator.next();
 		sb.append(dot(fil));
 		// inserer ornement arc ici
 		sb.append(id.get(x) + " -> " + id.get(fil) + "\n");

@@ -15,7 +15,7 @@ public class Grille implements Etat {
 
     public Grille(Grille g) {
 	grille = Arrays.copyOf(g.grille, g.grille.length);
-	for (int i = 0; i < g.largeur(); i++) {
+	for (int i = 0; i < g.grille.length; i++) {
 	    grille[i] = Arrays.copyOf(g.grille[i], g.grille[i].length);
 	}
     }
@@ -69,10 +69,23 @@ public class Grille implements Etat {
 
     public int get(int x, int y) {
 	try {
-	    return grille[x][y];
+	    return grille[y][x];
 	} catch (ArrayIndexOutOfBoundsException e) {
 	    return BLOQUE;
 	}
+    }
+
+    @Override
+    public int hashCode() {
+	int[][] g = grille;
+	int hash = Integer.MIN_VALUE;
+	for (int i = 0; i < 4; i++) {
+	    g = rotation(g);
+	    hash = Math.max(hash, Arrays.deepHashCode(g));
+	    hash = Math.max(hash, Arrays.deepHashCode(symetrique(g)));
+
+	}
+	return hash;
     }
 
     public int hauteur() {
@@ -81,8 +94,8 @@ public class Grille implements Etat {
     }
 
     public boolean isPlein() {
-	for (int i = 0; i < grille.length; i++) {
-	    for (int j = 0; j < grille[i].length; j++) {
+	for (int i = 0; i < largeur(); i++) {
+	    for (int j = 0; j < hauteur(); j++) {
 		if (get(i, j) == VIDE)
 		    return false;
 	    }
@@ -97,17 +110,19 @@ public class Grille implements Etat {
     }
 
     public int largeur() {
-	return grille[hauteur()].length;
+	return grille[hauteur() - 1].length;
 
     }
 
-    public int placer(int x, int y) {
-	return 0;
+    public void placer(int x, int y) {
+	if (get(x, y) == VIDE) {
+	    grille[y][x] = JOUER;
+	}
     }
 
     public void RempliCarres() {
-	for (int i = 0; i < grille.length; i++) {
-	    for (int j = 0; j < grille[i].length; j++) {
+	for (int i = 0; i < largeur(); i++) {
+	    for (int j = 0; j < hauteur(); j++) {
 		if (CarreComplet(i, j)) {
 		    placer(i, j);
 		    RempliCarres();
@@ -134,7 +149,8 @@ public class Grille implements Etat {
 	    boolean complet = true;
 	    int i = 0;
 	    while (complet && i < t.length) {
-		complet = get(x + s * t[i][0], y + s * t[i][1]) == JOUER;
+		complet = get(x + s * t[i][1], y + s * t[i][0]) == JOUER;
+		i++;
 	    }
 	    if (complet)
 		return true;
@@ -167,7 +183,7 @@ public class Grille implements Etat {
     private String toString(boolean toDot) {
 	StringBuffer sb = new StringBuffer();
 	for (int i = 0; i < grille.length; i++) {
-	    for (int j = 0; j < grille[0].length; j++) {
+	    for (int j = 0; j < grille[i].length; j++) {
 		switch (grille[i][j]) {
 		case VIDE:
 		    sb.append(" ");

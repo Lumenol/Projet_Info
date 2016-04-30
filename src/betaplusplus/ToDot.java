@@ -4,13 +4,13 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
-public class toDot implements Fonction<Etat, String> {
+public class ToDot implements Fonction<Etat, String> {
 
     private Fonction<Etat, Iterator<Etat>> succ;
     private Fonction<Etat, Integer> id;
     private Map<Etat, Boolean> visite;
 
-    public toDot(Fonction<Etat, Iterator<Etat>> succ) {
+    public ToDot(Fonction<? extends Etat, Iterator<? extends Etat>> succ) {
 	super();
 	this.succ = succ;
 	id = new FonctionDynamique<>(new Fonction<Etat, Integer>() {
@@ -43,7 +43,7 @@ public class toDot implements Fonction<Etat, String> {
 	if (!visite.containsKey(x)) {
 	    StringBuffer sb = new StringBuffer(id.get(x));
 	    // inserer representation
-	    sb.append(" [ label= \" \"]\n");
+	    sb.append(" [ label= \"" + x.label() + "\"]\n");
 	    for (Iterator<Etat> iterator = succ.get(x); iterator.hasNext();) {
 		Etat fil = iterator.next();
 		sb.append(dot(fil));

@@ -199,7 +199,7 @@ public class Configuration extends Grille implements Sommet {
     }
 
     private int[][] rotation(int[][] t) {
-	int[][] r = new int[t[0].length][t.length];
+	int[][] r = new int[t[t.length - 1].length][t.length];
 	for (int i = 0; i < r.length; i++) {
 	    for (int j = 0; j < r[i].length; j++) {
 		r[i][j] = t[j][r.length - 1 - i];

@@ -1,14 +1,13 @@
 package betaplusplus;
 
-import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Iterator;
-import java.util.Map;
 
 public class ToDot<T extends Etat> implements Fonction<T, String> {
 
     private Fonction<T, Iterator<T>> succ;
     private Fonction<Etat, Integer> id;
-    private Map<Etat, Boolean> visite;
+    private HashSet<Etat> visite;
 
     public ToDot(Fonction<T, Iterator<T>> succ) {
 	super();
@@ -23,12 +22,11 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
 	    }
 	});
 
-	visite = new HashMap<>();
-
     }
 
     @Override
     public String get(T x) {
+	visite = new HashSet<>();
 	StringBuffer sb = new StringBuffer("digraph default{");
 	sb.append("graph[labelloc=\"t\" fontsize=16 fontcolor=\"blue\"\n");
 	sb.append("label=\"Graphe\"]\n");
@@ -40,7 +38,7 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     }
 
     private String dot(T x) {
-	if (!visite.containsKey(x)) {
+	if (!visite.contains(x)) {
 	    StringBuffer sb = new StringBuffer(id.get(x).toString());
 	    // inserer representation
 	    sb.append(" [ label= \"" + x.label() + "\"]\n");
@@ -50,7 +48,7 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
 		// inserer ornement arc ici
 		sb.append(id.get(x) + " -> " + id.get(fil) + "\n");
 	    }
-	    visite.put(x, Boolean.TRUE);
+	    visite.add(x);
 	    return sb.toString();
 	} else
 	    return "";

@@ -9,10 +9,10 @@ import betaplusplus.ToDot;
  */
 public class testDot {
 
-    public static void main(String[] args){
-        Simplet simplet  =new Simplet();
-        ToDot dot = new ToDot(simplet);
-        System.out.println(dot.get(new Grille(3,3,true)));
-    }
+	public static void main(String[] args) {
+		Simplet simplet = new Simplet();
+		ToDot dot = new ToDot(simplet);
+		System.out.println(dot.get(new Grille(3, 3, true)));
+	}
 
 }

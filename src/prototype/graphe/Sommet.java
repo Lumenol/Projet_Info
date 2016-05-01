@@ -3,13 +3,13 @@ package prototype.graphe;
 import java.util.Iterator;
 
 public interface Sommet {
-    void addFil(Sommet s);
+	void addFil(Sommet s);
 
-    Iterator<Sommet> iterator();
+	Iterator<Sommet> iterator();
 
-    String nom();
+	String nom();
 
-    String toDot();
+	String toDot();
 
-    String toPip();
+	String toPip();
 }

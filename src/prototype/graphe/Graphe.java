@@ -3,11 +3,11 @@ package prototype.graphe;
 import java.util.Iterator;
 
 public interface Graphe {
-    boolean addSommet(Sommet s, Sommet pere);
+	boolean addSommet(Sommet s, Sommet pere);
 
-    Iterator<Sommet> iterator();
+	Iterator<Sommet> iterator();
 
-    String toDot();
+	String toDot();
 
-    String toPip();
+	String toPip();
 }

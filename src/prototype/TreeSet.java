@@ -9,7 +9,7 @@ import java.util.SortedSet;
 
 //import sun.reflect.generics.tree.Tree;
 
-public class TreeSet<E> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, Serializable{
+public class TreeSet<E> extends AbstractSet<E> implements NavigableSet<E>, Cloneable, Serializable {
 
 	@Override
 	public Comparator<? super E> comparator() {
@@ -124,6 +124,5 @@ public class TreeSet<E> extends AbstractSet<E> implements NavigableSet<E>, Clone
 		// TODO Auto-generated method stub
 		return 0;
 	}
-	
-	
+
 }

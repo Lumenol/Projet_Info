@@ -54,7 +54,12 @@ public class Grille implements Etat {
 			if (t == null || k >= t.length) {
 			    grille[i][j] = VIDE;
 			} else {
-			    grille[i][j] = t[k];
+				if (t[k]==1){
+					grille[i][j]=JOUER;
+				}
+				else {
+					grille[i][j] = t[k];
+				}
 			    k++;
 			}
 		    }

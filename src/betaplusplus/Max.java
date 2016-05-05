@@ -2,24 +2,28 @@ package betaplusplus;
 
 import java.util.Iterator;
 
-public class Max extends FonctionDynamique<Etat, Float> {
+public class Max<T extends Etat> extends FonctionDynamique<T, Float> {
 
-    public Max(Fonction<Etat, Iterable<Etat>> successeurs, Fonction<Etat, Integer> nombreCarre,
-	    Fonction<Etat, Float> V2) {
-	super(new Fonction<Etat, Float>() {
+    public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre) {
+	this(successeurs, nombreCarre, null);
+	fonction = new Moyenne(successeurs, nombreCarre, this);
+    }
 
-	    private Fonction<Etat, Iterable<Etat>> succ = successeurs;
-	    private Fonction<Etat, Integer> nbCarre = nombreCarre;
-	    private Fonction<Etat, Float> v2 = V2;
+    public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V2) {
+	super(new Fonction<T, Float>() {
+
+	    private Fonction<T, Iterable<T>> succ = successeurs;
+	    private Fonction<T, Integer> nbCarre = nombreCarre;
+	    private Fonction<T, Float> v2 = V2;
 
 	    @Override
-	    public Float get(Etat x) {
-		Iterator<Etat> s = succ.get(x).iterator();
+	    public Float get(T x) {
+		Iterator<T> s = succ.get(x).iterator();
 		if (s.hasNext()) {
 		    float max = Float.NEGATIVE_INFINITY;
 		    float m;
-		    for (Iterator<Etat> iterator = s; iterator.hasNext();) {
-			Etat y = iterator.next();
+		    for (Iterator<T> iterator = s; iterator.hasNext();) {
+			T y = iterator.next();
 			m = nbCarre.get(x) - nbCarre.get(y) - v2.get(y);
 			max = m > max ? m : max;
 		    }

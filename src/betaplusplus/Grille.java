@@ -164,7 +164,7 @@ public class Grille implements Etat {
     public void RempliCarres() {
 	for (int i = 0; i < largeur(); i++) {
 	    for (int j = 0; j < hauteur(); j++) {
-		if (CarreComplet(i, j)) {
+		if (carreComplet(i, j)) {
 		    placer(i, j);
 		    RempliCarres();
 		    return;
@@ -183,7 +183,7 @@ public class Grille implements Etat {
      * @param y
      * @return
      */
-    private boolean CarreComplet(int x, int y) {
+    private boolean carreComplet(int x, int y) {
 	if (get(x, y) != VIDE) {
 	    return false;
 	}

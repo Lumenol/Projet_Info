@@ -60,13 +60,41 @@ public class GrilleTest {
 		}
 	}
 	
-	/*@Test
-	public void testCarreComplet () {
-		int [] t = {1,0,0,1,0};
-		Grille g = new Grille(3,3,true,t);
-		if (! carreComplet(2,1)){
-			
+	@Test
+	public void testPlacer () {
+		int [] t = {1,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,0};
+		Grille g1 = new Grille(3,3,false,t);
+		Grille g2 = new Grille(3,3,false);
+		g2.placer(1,0);
+		g2.placer(4, 1);
+		g2.placer(2, 3);
+		g2.placer(3, 6);
+		if (!g1.equals(g2)){
+			fail("batons mal placés \n"+g1.toString()+"\n \n"+g2.toString());
 		}
-	}*/
+	}
+	
+	@Test
+	//dans testREmpliCarres, on teste à la fois rempliCarres et carreComplet qu'on ne peut pas tester directement (private)
+	public void testRempliCarres () {
+		int [] t = {0,0,1,0,0,0,0,1,0,0,0,0};
+		int [] t2 = {1,0,1,0,0,1,0,1,0,0,1,0};
+		Grille g1 = new Grille(3,3,true,t);
+		Grille g2 = new Grille(3,3,true,t2);
+		g1.RempliCarres();
+		if (!g1.equals(g2)){
+			fail("carrés du côté non remplis \n"+g1.toString());
+		}
+		int [] t3 = {0,0,0,0,0,0,0,0,1,0,0,1,1,0};
+		int [] t4 = {0,0,0,0,0,0,0,0,1,0,0,1,1,0,0,1};
+		Grille g3 = new Grille(3,3,false,t3);
+		Grille g4 = new Grille(3,3,false,t4);
+		g3.RempliCarres();
+		if (!g3.equals(g4)){
+			fail("carré du milieu non rempli \n"+g3.toString());
+		}
+		
+	}
 
 }
+

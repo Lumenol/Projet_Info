@@ -11,9 +11,4 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
     
     
     }
-//   public int rcGrile (int h, int l, int[] t) {
-//	   
-//	   return 0;
-//   }
-//
 }

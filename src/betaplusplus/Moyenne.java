@@ -22,10 +22,10 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 	    private Fonction<T, Integer> nbCarre = nombreCarre;
 	    private Fonction<T, Float> v1 = V1;
 
-	    /*
+	    /**
 	     * (non-Javadoc)
-	     *
-	     * @see betaplusplus.Fonction#get(java.lang.Object)
+	     * @param x
+	     * @return
 	     */
 	    @Override
 	    public Float get(T x) {

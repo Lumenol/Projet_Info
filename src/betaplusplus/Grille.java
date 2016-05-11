@@ -26,10 +26,10 @@ public class Grille implements Etat {
      * 
      * @param hauteur
      * @param largeur
-     * @param contoure 
+     * @param contours 
      */
-    public Grille(int hauteur, int largeur, boolean contoure) {
-	this(hauteur, largeur, contoure, null);
+    public Grille(int hauteur, int largeur, boolean contours) {
+	this(hauteur, largeur, contours, null);
     }
 
     /**Contruit la Grille suivant les parametres passés  

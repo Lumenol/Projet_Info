@@ -8,7 +8,9 @@ import java.util.Iterator;
  */
 public class Moyenne<T> extends FonctionDynamique<T, Float> {
 
-    /**Constructeur de l'objet Moyenne
+    /**
+     * Constructeur de l'objet Moyenne
+     * 
      * @param successeurs
      * @param nombreCarre
      * @param V1
@@ -20,8 +22,9 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 	    private Fonction<T, Integer> nbCarre = nombreCarre;
 	    private Fonction<T, Float> v1 = V1;
 
-	    /* (non-Javadoc)
-	     * 
+	    /*
+	     * (non-Javadoc)
+	     *
 	     * @see betaplusplus.Fonction#get(java.lang.Object)
 	     */
 	    @Override

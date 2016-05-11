@@ -17,9 +17,12 @@ public class Max<T> implements Fonction<T, Float> {
      */
     public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre) {
 	this(successeurs, nombreCarre, null);
+	setV2(new Moyenne(new Simplet(), nombreCarre, new FonctionDynamique<>(this)));
     }
 
-    /**Constructeur del'objet Max
+    /**
+     * Constructeur del'objet Max
+     *
      * @param successeurs
      * @param nombreCarre
      * @param V2
@@ -30,7 +33,9 @@ public class Max<T> implements Fonction<T, Float> {
 	v2 = V2;
     }
 
-    /* (non-Javadoc)
+    /*
+     * (non-Javadoc)
+     *
      * @see betaplusplus.Fonction#get(java.lang.Object)
      */
     @Override
@@ -52,7 +57,7 @@ public class Max<T> implements Fonction<T, Float> {
     }
 
     /**
-     * @param V2 
+     * @param V2
      */
     public void setV2(Fonction<T, Float> V2) {
 	v2 = V2;

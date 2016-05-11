@@ -13,7 +13,7 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 	 * 
 	 * @param successeurs
 	 * @param nombreCarre
-	 * @param V1
+	 * @param V1  
 	 */
 	public Moyenne(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V1) {
 		super(new Fonction<T, Float>() {

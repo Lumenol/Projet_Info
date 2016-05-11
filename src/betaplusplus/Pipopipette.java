@@ -1,5 +1,7 @@
 package betaplusplus;
 
+import java.util.Scanner;
+
 public class Pipopipette {
 
 	public static void main(String[] args) {
@@ -15,18 +17,35 @@ public class Pipopipette {
 				+ "java -jar pipopipette.jar -apprend parametres strategie calcule une stratégie par une méthode d’apprentissage (détail à venir).\n"
 				+ "java -jar pipopipette.jar -eval strategie strategie évalue les deux stratégies en paramètre de manière exacte et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons.\n"
 				+ "java -jar pipopipette.jar -simul N strategie strategie évalue les deux stratégies en paramètre par simulation en lançant N parties et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons..\n"); break;
-		case "-graphe": new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Boolean.parseBoolean(args[1])); break;
+		case "-graphe": Grille g = new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Boolean.parseBoolean(args[1])); break;//a finir :S
 		case "-joue":
 			switch (args[1]){
-			case "-simplet":  ; break;
-			case "-prevoyant": ; break;
-			case "-idiot": ; break;
-			case "-pondere": ; break;
+			case "-simplet": jeuSimplet() ; break;
+			case "-prevoyant": jeu() ; break;
+			case "-idiot": jeu() ; break;
+			case "-pondere": jeu() ; break;
 			}; break;
 		case "-cal": ; break;
 		case "-apprend": ; break;
 		case "-eval": ; break;
 		case "-simul": ; break;
 		}
+	}
+	private static void jeu() {
+		// TODO Auto-generated method stub
+		
+	}
+	public static void jeuSimplet(){
+		Scanner sc = new Scanner(System.in);
+		Humain a = new Humain();
+		Simplet b = new Simplet();
+		System.out.println("Hauteur de grille :");
+		int hauteur_de_grille = sc.nextInt();
+		System.out.println("Largeur de grille :");
+		int Largeur_de_grille = sc.nextInt();
+		System.out.println("Voulez vous des contours sur votre grille? : (true/false)");
+		String contours = sc.next();
+		Partie c = new Partie(hauteur_de_grille,Largeur_de_grille,Boolean.parseBoolean(contours), a, b);
+		c.nouvellePartie(true);
 	}
 }

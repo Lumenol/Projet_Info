@@ -59,7 +59,11 @@ public class Partie {
 	while (!etape.isPlein()) {
 	    if (bavard) {
 		// imodifier selon pour avoir un beau truc
+		System.out.println("A vous de jouer");
 		System.out.println(etape);
+		((Humain) joueurs.get(j)).jouer(etape);
+		System.out.println(etape);
+		j = 1;
 	    }
 	    Iterable<Grille> it = joueurs.get(j).get(etape);
 	    ArrayList<Grille> suivants = new ArrayList<>();

@@ -37,8 +37,7 @@ public class Grille implements Etat {
 	 * @param hauteur
 	 * @param largeur
 	 * @param contours
-	 * @param t
-	 *            La grille
+	 * @param t La grille
 	 * 
 	 */
 	public Grille(int hauteur, int largeur, boolean contours, int[] t) {
@@ -190,10 +189,8 @@ public class Grille implements Etat {
 	/**
 	 * Determine si un carre est present aux coordonnees passees
 	 * 
-	 * @param x
-	 *            Coord h
-	 * @param y
-	 *            Coord V
+	 * @param x Coord H
+	 * @param y Coord V
 	 * @return True si un carre est detecte sur les coordonnees x y /False
 	 */
 	private boolean carreComplet(int x, int y) {

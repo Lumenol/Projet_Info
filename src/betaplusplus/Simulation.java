@@ -11,8 +11,8 @@ public class Simulation {
      * @param largeur largeur de la grille
      * @param contours
      * @param n
-     * @param j1
-     * @param j2
+     * @param j1 Joueur 1
+     * @param j2 Joueur 2
      * @return
      */
     public static float simulation(int hauteur, int largeur, boolean contours, int n,

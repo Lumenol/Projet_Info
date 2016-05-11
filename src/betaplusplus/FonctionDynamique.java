@@ -27,8 +27,10 @@ public class FonctionDynamique<E, F> implements Fonction<E, F> {
 	memoire = new HashMap<>();
     }
 
-    /* (non-Javadoc)
-     * @see betaplusplus.Fonction#get(java.lang.Object)
+    
+    /** 
+     * @param x Cle a chercher dans la map
+     * @return Valeur associee
      */
     public F get(E x) {
 	F v;
@@ -40,6 +42,7 @@ public class FonctionDynamique<E, F> implements Fonction<E, F> {
     }
 
     /**
+     * Ajout (cle,valeur) a la map
      * @param key
      * @param value
      * @return

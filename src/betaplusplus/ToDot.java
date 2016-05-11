@@ -6,7 +6,7 @@ import java.util.Iterator;
 public class ToDot<T extends Etat> implements Fonction<T, String> {
 
     private Fonction<T, Iterable<T>> succ;
-    private Fonction<T, Number> points;
+    private Fonction<T, ? extends Number> points;
     private Fonction<Etat, Integer> id;
     private HashSet<Etat> visite;
 
@@ -14,7 +14,7 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
 	this(succ, null);
     }
 
-    public ToDot(Fonction<T, Iterable<T>> succ, Fonction<T, Number> points) {
+    public ToDot(Fonction<T, Iterable<T>> succ, Fonction<T, ? extends Number> points) {
 	super();
 	this.succ = succ;
 	this.points = points;

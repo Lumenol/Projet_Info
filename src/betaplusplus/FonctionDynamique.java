@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class FonctionDynamique<E, F> implements Fonction<E, F> {
     private HashMap<E, F> memoire;
-    protected Fonction<E, F> fonction;
+    private Fonction<E, F> fonction;
 
     public FonctionDynamique(Fonction<E, F> fonction) {
 	this.fonction = fonction;

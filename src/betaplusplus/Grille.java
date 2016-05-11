@@ -7,7 +7,6 @@ import java.util.Arrays;
  * @author Julie
  *
  */
-
 public class Grille implements Etat {
 	final static int BLOQUE = 1;
 	final static int JOUER = 2;

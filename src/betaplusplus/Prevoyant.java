@@ -19,11 +19,10 @@ public class Prevoyant extends AbstractSuccesseurs<Grille> {
 		    Grille y = iterator.next();
 		    int m = nbC.get(x) - nbC.get(y);
 		    if (m >= max) {
-
-			if (m > max) {
-			    max = m;
-			    retour.clear();
-			}
+		    	if (m > max) {
+		    		max = m;
+		    		retour.clear();
+		    	}
 			retour.add(y);
 		    }
 		}

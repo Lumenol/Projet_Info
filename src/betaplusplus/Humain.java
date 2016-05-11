@@ -9,6 +9,10 @@ public class Humain implements Fonction<Grille, Iterable<Grille>> {
 
 
 	}
+	/**
+	 * @param grille
+	 * @return
+	 */
 	public Iterable<Grille> jouer(Grille grille){
 		HashSet<Grille> g = new HashSet<>();
 		Scanner sc = new Scanner(System.in);

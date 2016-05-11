@@ -23,7 +23,6 @@ public class Grille implements Etat {
 
     /**
      * Constructeur de l'objet Grille
-     * 
      * @param hauteur
      * @param largeur
      * @param contoure 

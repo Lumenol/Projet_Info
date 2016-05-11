@@ -2,8 +2,17 @@ package betaplusplus;
 
 import java.util.Iterator;
 
+/**
+ *
+ * @param <T>
+ */
 public class Moyenne<T> extends FonctionDynamique<T, Float> {
 
+    /**Constructeur de l'objet Moyenne
+     * @param successeurs
+     * @param nombreCarre
+     * @param V1
+     */
     public Moyenne(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V1) {
 	super(new Fonction<T, Float>() {
 
@@ -11,6 +20,10 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 	    private Fonction<T, Integer> nbCarre = nombreCarre;
 	    private Fonction<T, Float> v1 = V1;
 
+	    /* (non-Javadoc)
+	     * 
+	     * @see betaplusplus.Fonction#get(java.lang.Object)
+	     */
 	    @Override
 	    public Float get(T x) {
 		Iterator<T> s = succ.get(x).iterator();

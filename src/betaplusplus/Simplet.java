@@ -4,9 +4,15 @@ import java.util.HashSet;
 
 public class Simplet extends AbstractSuccesseurs<Grille> {
 
+    /**
+     * Constructeur vide de l'objet
+     */
     public Simplet() {
 	super(new Fonction<Grille, Iterable<Grille>>() {
 
+	    /* (non-Javadoc)
+	     * @see betaplusplus.Fonction#get(java.lang.Object)
+	     */
 	    @Override
 	    public Iterable<Grille> get(Grille x) {
 		HashSet<Grille> successeur = new HashSet<>();

@@ -2,22 +2,37 @@ package betaplusplus;
 
 import java.util.Iterator;
 
+/**
+ * @param <T>
+ */
 public class Max<T> implements Fonction<T, Float> {
 
     private Fonction<T, Iterable<T>> succ;
     private Fonction<T, Integer> nbCarre;
     private Fonction<T, Float> v2;
 
+    /**
+     * @param successeurs
+     * @param nombreCarre
+     */
     public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre) {
 	this(successeurs, nombreCarre, null);
     }
 
+    /**Constructeur del'objet Max
+     * @param successeurs
+     * @param nombreCarre
+     * @param V2
+     */
     public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V2) {
 	succ = successeurs;
 	nbCarre = nombreCarre;
 	v2 = V2;
     }
 
+    /* (non-Javadoc)
+     * @see betaplusplus.Fonction#get(java.lang.Object)
+     */
     @Override
     public Float get(T x) {
 	Iterator<T> s = succ.get(x).iterator();
@@ -36,6 +51,9 @@ public class Max<T> implements Fonction<T, Float> {
 
     }
 
+    /**
+     * @param V2 
+     */
     public void setV2(Fonction<T, Float> V2) {
 	v2 = V2;
     }

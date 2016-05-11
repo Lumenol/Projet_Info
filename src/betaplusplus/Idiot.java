@@ -5,12 +5,18 @@ import java.util.LinkedList;
 
 public class Idiot extends AbstractSuccesseurs<Grille> {
 
+    /**
+     * 
+     */
     public Idiot() {
 	super(new Fonction<Grille, Iterable<Grille>>() {
 
 	    private Simplet simplet = new Simplet();
 	    private NombreCarre nbC = new NombreCarre();
 
+	    /* (non-Javadoc)
+	     * @see betaplusplus.Fonction#get(java.lang.Object)
+	     */
 	    @Override
 	    public Iterable<Grille> get(Grille x) {
 		LinkedList<Grille> retour = new LinkedList<>();

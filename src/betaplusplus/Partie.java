@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.Random;
 
+/**
+ *
+ */
 public class Partie {
 
     private ArrayList<Fonction<Grille, Iterable<Grille>>> joueurs;
@@ -12,6 +15,13 @@ public class Partie {
 
     private Grille racine;
 
+    /**Constructeur de l'objet Partie
+     * @param hauteur hauteur de la grille
+     * @param largeur largeur de la grille
+     * @param contours 
+     * @param j1 Joueur 1
+     * @param j2 Joueur 2
+     */
     public Partie(int hauteur, int largeur, boolean contours, Fonction<Grille, Iterable<Grille>> j1,
 	    Fonction<Grille, Iterable<Grille>> j2) {
 	this.racine = new Grille(hauteur, largeur, contours);
@@ -24,6 +34,10 @@ public class Partie {
 	points.add(0);
     }
 
+    /**
+     * @param j Joueur 
+     * @return Le nombre de points attribues au joueur j
+     */
     public Integer getPoints(int j) {
 	try {
 	    return points.get(j);
@@ -32,6 +46,9 @@ public class Partie {
 	}
     }
 
+    /**Lanceur de la partie de jeu
+     * @param bavard Parametre qui enclenche l'impression des etapes successives de la partie
+     */
     public void nouvellePartie(boolean bavard) {
 	points.set(0, 0);
 	points.set(1, 0);

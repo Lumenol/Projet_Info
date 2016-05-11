@@ -30,7 +30,7 @@ public class Jeu {
 
 			do {
 				cpttab++;
-				System.out.println("Etape tab n�" + cpttab);
+				System.out.println("Etape tab n" + cpttab);
 
 				for (int i = 0; i < nbrPossibilite; i++) {
 					try {

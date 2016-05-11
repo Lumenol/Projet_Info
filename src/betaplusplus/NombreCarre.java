@@ -2,8 +2,14 @@ package betaplusplus;
 
 public class NombreCarre extends FonctionDynamique<Grille, Integer> {
 
+    /**
+     * 
+     */
     public NombreCarre() {
 	super(new Fonction<Grille, Integer>() {
+	    /* (non-Javadoc)
+	     * @see betaplusplus.Fonction#get(java.lang.Object)
+	     */
 	    @Override
 	    public Integer get(Grille x) {
 		int nbCarre = 0;

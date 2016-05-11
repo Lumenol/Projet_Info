@@ -2,7 +2,7 @@ package beta;
 
 /**
  * 
- * @author Julie
+ * 
  * 
  */
 

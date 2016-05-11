@@ -22,21 +22,22 @@ public class Grille implements Etat {
     }
 
     /**
-     * Constructeur obj Grille
+     * Constructeur de l'objet Grille
      * 
      * @param hauteur
      * @param largeur
-     * @param contoure
+     * @param contoure 
      */
     public Grille(int hauteur, int largeur, boolean contoure) {
 	this(hauteur, largeur, contoure, null);
     }
 
-    /**
+    /**Contruit la Grille suivant les parametres passés  
      * @param hauteur
      * @param largeur
      * @param contoure
-     * @param t
+     * @param t La grille
+     * 
      */
     public Grille(int hauteur, int largeur, boolean contoure, int[] t) {
 	hauteur = hauteur <= 0 ? 1 : hauteur;
@@ -91,7 +92,7 @@ public class Grille implements Etat {
      *            coord h
      * @param y
      *            coord v
-     * @return valeur /bloque
+     * @return valeur de la grille aux coordonnees x y (vide / jouer )/ bloque si innaccessible
      */
     public int get(int x, int y) {
 	try {
@@ -101,9 +102,12 @@ public class Grille implements Etat {
 	}
     }
 
+    /* (non-Javadoc)
+     * Fonction de hachage pour la grille incluant les rotations
+     */
     @Override
-    public int hashCode() {
-	int[][] g = grille;
+    public int hashCode() { 
+    int[][] g = grille;
 	int hash = Integer.MIN_VALUE;
 	for (int i = 0; i < 4; i++) {
 	    g = rotation(g);
@@ -150,10 +154,9 @@ public class Grille implements Etat {
     }
 
     /**
-     * @param x
-     *            Coordonnee h
-     * @param y
-     *            Coordonnee v
+     * @param x Coordonnee h        
+     * @param y Coordonnee v
+     * 
      */
     public void placer(int x, int y) {
 	if (get(x, y) == VIDE) {
@@ -161,6 +164,9 @@ public class Grille implements Etat {
 	}
     }
 
+    /**
+     * 
+     */
     public void RempliCarres() {
 	for (int i = 0; i < largeur(); i++) {
 	    for (int j = 0; j < hauteur(); j++) {
@@ -177,11 +183,10 @@ public class Grille implements Etat {
 	return toString(false);
     }
 
-    /**
-     * @param x
-     *            C
-     * @param y
-     * @return
+    /**Determine si un carre est present aux coordonnees passees
+     * @param x Coord h
+     * @param y Coord V
+     * @return True si un carre est detecte sur les coordonnees x y  /False
      */
     private boolean carreComplet(int x, int y) {
 	if (get(x, y) != VIDE) {
@@ -206,6 +211,10 @@ public class Grille implements Etat {
 
     }
 
+    /**
+     * @param t grille
+     * @return La grille t pivotee
+     */
     private int[][] rotation(int[][] t) {
 	int[][] r = new int[t[t.length - 1].length][t.length];
 	for (int i = 0; i < r.length; i++) {
@@ -216,6 +225,10 @@ public class Grille implements Etat {
 	return r;
     }
 
+    /**
+     * @param t grille
+     * @return La grille t symetrique 
+     */
     private int[][] symetrique(int[][] t) {
 	int[][] t2 = new int[t.length][t[t.length - 1].length];
 	for (int i = 0; i < t.length; i++) {

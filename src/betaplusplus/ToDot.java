@@ -3,6 +3,11 @@ package betaplusplus;
 import java.util.HashSet;
 import java.util.Iterator;
 
+/**
+ * 
+ *
+ * @param <T>
+ */
 public class ToDot<T extends Etat> implements Fonction<T, String> {
 
     private Fonction<T, Iterable<T>> succ;
@@ -10,10 +15,17 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     private Fonction<Etat, Integer> id;
     private HashSet<Etat> visite;
 
+    /**
+     * @param succ 
+     */
     public ToDot(Fonction<T, Iterable<T>> succ) {
 	this(succ, null);
     }
 
+    /**
+     * @param succ
+     * @param points
+     */
     public ToDot(Fonction<T, Iterable<T>> succ, Fonction<T, ? extends Number> points) {
 	super();
 	this.succ = succ;
@@ -30,6 +42,10 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
 
     }
 
+    /** 
+     * @param x 
+     * @return 
+     */
     @Override
     public String get(T x) {
 	visite = new HashSet<>();
@@ -43,6 +59,10 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
 	return sb.toString();
     }
 
+    /**
+     * @param x
+     * @return 
+     */
     private String dot(T x) {
 	if (!visite.contains(x)) {
 	    StringBuffer sb = new StringBuffer(id.get(x).toString());

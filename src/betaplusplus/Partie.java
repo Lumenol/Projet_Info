@@ -72,9 +72,6 @@ public class Partie {
 		// imodifier selon pour avoir un beau truc
 		System.out.println("A vous de jouer");
 		System.out.println(etape);
-		joueurs.get(j).get(etape);
-		System.out.println(etape);
-		j = 1;
 	    }
 	    Iterable<Grille> it = joueurs.get(j).get(etape);
 	    ArrayList<Grille> suivants = new ArrayList<>();

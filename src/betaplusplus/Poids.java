@@ -4,33 +4,22 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.IllegalFormatException;
+import java.util.ArrayList;
 import java.util.IllegalFormatFlagsException;
 import java.util.StringTokenizer;
 
-public class Pondere extends AbstractSuccesseurs<Grille> {
+public class Poids extends FonctionDynamique<Grille, Integer> {
 
-    /**
-     * @param poids
-     * @param fonction
-     */
-    public Pondere(Fonction<Grille, Integer> poids) {
-	super(new Fonction<Grille, Iterable<Grille>>() {
-	    Fonction<Grille, Integer> p = poids;
+    public Poids(String pip) throws FileNotFoundException, NumberFormatException {
+	super(new Fonction<Grille, Integer>() {
 
 	    @Override
-	    public Iterable<Grille> get(Grille x) {
+	    public Integer get(Grille x) {
 		// TODO Auto-generated method stub
-		return null;
+		return 0;
 	    }
 	});
 
-	// TODO Auto-generated constructor stub
-
-    }
-
-    public Partie read(Fonction<Grille, Iterable<Grille>> j1, String pip)
-	    throws FileNotFoundException, IllegalFormatException, NumberFormatException {
 	BufferedReader br = new BufferedReader(new FileReader(pip));
 	String line;
 	boolean type;
@@ -51,18 +40,34 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 	    }
 	    hauteur = Integer.parseInt(st.nextToken());
 	    largeur = Integer.parseInt(st.nextToken());
-
 	    while ((line = br.readLine()) != null) {
-
+		ArrayList<Integer> tab = new ArrayList<>();
+		st = new StringTokenizer(line);
+		String l = st.nextToken();
+		for (int i = 0; i < line.length(); i++) {
+		    if (line.charAt(i) == ' ') {
+			line = line.substring(i + 1);
+			break;
+		    }
+		    switch (line.charAt(i)) {
+		    case '0':
+			tab.add(0);
+			break;
+		    case '1':
+			tab.add(1);
+			break;
+		    default:
+			break;
+		    }
+		}
+		Integer[] t = new Integer[1];
+		put(new Grille(hauteur, largeur, type, tab.toArray(t)), Integer.parseInt(st.nextToken()));
 	    }
 
 	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
 	}
 
-	return null;
-
+	// TODO Auto-generated constructor stub
     }
 
 }

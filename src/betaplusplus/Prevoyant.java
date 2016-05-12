@@ -2,7 +2,11 @@ package betaplusplus;
 
 import java.util.Iterator;
 import java.util.LinkedList;
-
+/**
+ * 
+ * Type de joueur (strategie)
+ *
+ */
 public class Prevoyant extends AbstractSuccesseurs<Grille> {
 
 	/**

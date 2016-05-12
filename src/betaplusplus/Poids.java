@@ -10,16 +10,17 @@ import java.util.StringTokenizer;
 
 public class Poids extends FonctionDynamique<Grille, Integer> {
 
-    /**
-     * @param pip
-     * @throws FileNotFoundException
+    /**Constructeur de Poids
+     * @param pip Fichier .pip 
+     * @throws FileNotFoundException Si le fichier n'est pas present
      * @throws NumberFormatException
+     *
      */
     public Poids(String pip) throws FileNotFoundException, NumberFormatException {
 	super(new Fonction<Grille, Integer>() {
 
 	    /** 
-	     * @return
+	     * @return Array list d' etats avec leur poids assicocies
 	     * @param x grille
 	     * @see betaplusplus.Fonction#get(java.lang.Object)
 	     */

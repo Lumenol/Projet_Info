@@ -1,7 +1,11 @@
 package betaplusplus;
 
 import java.util.HashSet;
-
+/**
+ * 
+ * Type de joueur (strategie)
+ *
+ */
 public class Simplet extends AbstractSuccesseurs<Grille> {
 
 	/**

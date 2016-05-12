@@ -5,7 +5,7 @@ import java.util.LinkedList;
 
 public class Pondere extends AbstractSuccesseurs<Grille> {
 
-    /**
+    /**Type de joueur (strategie)
      * @param poids
      */
     public Pondere(Fonction<Grille, Integer> poids) {
@@ -13,9 +13,9 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 	    Fonction<Grille, Integer> p = poids;
 	    Simplet simplet = new Simplet();
 	    NombreCarre nbC = new NombreCarre();
-/**
- * @param x 
- * @return 
+/**Getter liste de 
+ * @param x grille
+ * @return Liste chainee 
  */
 	    @Override
 	    public Iterable<Grille> get(Grille x) {

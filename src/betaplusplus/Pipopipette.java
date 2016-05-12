@@ -81,9 +81,9 @@ public class Pipopipette {
 		}
 	}
 
-	/**
-	 * @param ia
-	 * @param joueur Nombre de joueurs
+	/**Lance la partie
+	 * @param ia le type de joueur adversaire (idiot, humain , simplet , pondere , prevoyant )
+	 * @param joueur Determine je premier joueur ( celui qui commence)
 	 */
 	public static void jeu(Fonction<Grille, Iterable<Grille>> ia, String joueur) {
 		Scanner sc = new Scanner(System.in);
@@ -103,7 +103,7 @@ public class Pipopipette {
 		c.nouvellePartie(true);
 		sc.close();
 	}
-	/**Configuration de la grille de jeu
+	/**Configuration de la grille de jeu ( fonction interactive) 
 	 * @return une grille avec la configuration desiree
 	 */
 	public static Grille cal() {

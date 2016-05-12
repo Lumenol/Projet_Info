@@ -187,7 +187,6 @@ public class Grille implements Etat {
 				if (carreComplet(i, j)) {
 					placer(i, j);
 					RempliCarres();
-					// return;
 				}
 			}
 		}

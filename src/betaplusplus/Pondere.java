@@ -1,12 +1,7 @@
 package betaplusplus;
 
-import java.io.BufferedReader;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.IllegalFormatException;
-import java.util.IllegalFormatFlagsException;
-import java.util.StringTokenizer;
+import java.util.Iterator;
+import java.util.LinkedList;
 
 public class Pondere extends AbstractSuccesseurs<Grille> {
 
@@ -17,51 +12,30 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
     public Pondere(Fonction<Grille, Integer> poids) {
 	super(new Fonction<Grille, Iterable<Grille>>() {
 	    Fonction<Grille, Integer> p = poids;
+	    Simplet simplet = new Simplet();
+	    NombreCarre nbC = new NombreCarre();
 
 	    @Override
 	    public Iterable<Grille> get(Grille x) {
-		// TODO Auto-generated method stub
-		return null;
+		LinkedList<Grille> retour = new LinkedList<>();
+		int min = Integer.MAX_VALUE;
+		for (Iterator<Grille> iterator = simplet.get(x).iterator(); iterator.hasNext();) {
+		    Grille y = iterator.next();
+		    int m = nbC.get(x) - nbC.get(y) + poids.get(y);
+		    if (m <= min) {
+
+			if (m < min) {
+			    min = m;
+			    retour.clear();
+			}
+			retour.add(y);
+		    }
+		}
+		return retour;
 	    }
 	});
 
 	// TODO Auto-generated constructor stub
-
-    }
-
-    public Partie read(Fonction<Grille, Iterable<Grille>> j1, String pip)
-	    throws FileNotFoundException, IllegalFormatException, NumberFormatException {
-	BufferedReader br = new BufferedReader(new FileReader(pip));
-	String line;
-	boolean type;
-	int hauteur, largeur;
-	try {
-	    StringTokenizer st = new StringTokenizer(br.readLine());
-	    if (st.countTokens() != 3)
-		throw new IllegalFormatFlagsException("Il manque des information");
-	    switch (st.nextToken()) {
-	    case "S":
-		type = false;
-		break;
-	    case "C":
-		type = true;
-		break;
-	    default:
-		throw new IllegalFormatFlagsException("Le type est incorect");
-	    }
-	    hauteur = Integer.parseInt(st.nextToken());
-	    largeur = Integer.parseInt(st.nextToken());
-
-	    while ((line = br.readLine()) != null) {
-
-	    }
-
-	} catch (IOException e) {
-	    // TODO Auto-generated catch block
-	    e.printStackTrace();
-	}
-
-	return null;
 
     }
 

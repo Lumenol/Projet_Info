@@ -1,13 +1,49 @@
 package betaplusplus;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.IllegalFormatException;
+import java.util.IllegalFormatFlagsException;
 import java.util.Iterator;
 import java.util.Random;
+import java.util.StringTokenizer;
 
 /**
  *
  */
 public class Partie {
+
+    public static Partie fromPip(Fonction<Grille, Iterable<Grille>> j1, String pip)
+	    throws FileNotFoundException, IllegalFormatException, NumberFormatException {
+	BufferedReader br = new BufferedReader(new FileReader(pip));
+	String line;
+	boolean type = false;
+	int hauteur = 0, largeur = 0;
+	try {
+	    StringTokenizer st = new StringTokenizer(br.readLine());
+	    if (st.countTokens() != 3)
+		throw new IllegalFormatFlagsException("Il manque des information");
+	    switch (st.nextToken()) {
+	    case "S":
+		type = false;
+		break;
+	    case "C":
+		type = true;
+		break;
+	    default:
+		throw new IllegalFormatFlagsException("Le type est incorect");
+	    }
+	    hauteur = Integer.parseInt(st.nextToken());
+	    largeur = Integer.parseInt(st.nextToken());
+	} catch (IOException e) {
+	}
+
+	return new Partie(hauteur, largeur, type, j1, new Pondere(new Poids(pip)));
+
+    }
 
     private ArrayList<Fonction<Grille, Iterable<Grille>>> joueurs;
     private ArrayList<Integer> points;
@@ -51,6 +87,10 @@ public class Partie {
 	} catch (Exception e) {
 	    return null;
 	}
+    }
+
+    public Grille getRacine() {
+	return racine;
     }
 
     /**

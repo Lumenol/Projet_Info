@@ -45,7 +45,7 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 				}
 			}
 		});
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

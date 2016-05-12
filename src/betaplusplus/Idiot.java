@@ -38,7 +38,7 @@ public class Idiot extends AbstractSuccesseurs<Grille> {
 				return retour;
 			}
 		});
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

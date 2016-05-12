@@ -25,7 +25,7 @@ public class Grille implements Etat {
 	 * 
 	 * @param hauteur
 	 * @param largeur
-	 * @param contours
+	 * @param contours affichage des contours (ou pas)
 	 */
 	public Grille(int hauteur, int largeur, boolean contours) {
 		this(hauteur, largeur, contours, null);
@@ -36,7 +36,7 @@ public class Grille implements Etat {
 	 * 
 	 * @param hauteur
 	 * @param largeur
-	 * @param contours
+	 * @param contours affichage des contours (ou pas)
 	 * @param t
 	 *            La grille
 	 * 

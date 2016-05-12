@@ -35,7 +35,7 @@ public class NombreCarre extends FonctionDynamique<Grille, Integer> {
 			}
 
 		});
-		// TODO Auto-generated constructor stub
+		
 	}
 
 }

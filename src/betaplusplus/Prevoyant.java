@@ -14,9 +14,10 @@ public class Prevoyant extends AbstractSuccesseurs<Grille> {
 			private Simplet simplet = new Simplet();
 			private NombreCarre nbC = new NombreCarre();
 
-			/*
+			/**
 			 * (non-Javadoc)
-			 * 
+			 * @return
+			 * @param x grille
 			 * @see betaplusplus.Fonction#get(java.lang.Object)
 			 */
 			@Override
@@ -37,7 +38,6 @@ public class Prevoyant extends AbstractSuccesseurs<Grille> {
 				return retour;
 			}
 		});
-		// TODO Auto-generated constructor stub
 	}
 
 }

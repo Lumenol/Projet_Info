@@ -7,7 +7,6 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 
     /**
      * @param poids
-     * @param fonction
      */
     public Pondere(Fonction<Grille, Integer> poids) {
 	super(new Fonction<Grille, Iterable<Grille>>() {

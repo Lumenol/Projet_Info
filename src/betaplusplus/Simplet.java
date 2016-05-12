@@ -10,9 +10,10 @@ public class Simplet extends AbstractSuccesseurs<Grille> {
 	public Simplet() {
 		super(new Fonction<Grille, Iterable<Grille>>() {
 
-			/*
-			 * (non-Javadoc)
+			/**
 			 * 
+			 * @return 
+			 * @param x grille
 			 * @see betaplusplus.Fonction#get(java.lang.Object)
 			 */
 			@Override
@@ -27,14 +28,10 @@ public class Simplet extends AbstractSuccesseurs<Grille> {
 							successeur.add(g);
 						}
 					}
-				}
-
-				// TODO Auto-generated method stub
+				}	
 				return successeur;
 			}
-
 		});
-		// TODO Auto-generated constructor stub
 	}
 
 }

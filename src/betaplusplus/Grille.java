@@ -32,15 +32,16 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * Contruit la Grille suivant les parametres passés
+	 * Contruit la Grille suivant les parametres passï¿½s
 	 * 
 	 * @param hauteur
 	 * @param largeur
 	 * @param contours
-	 * @param t La grille
+	 * @param t
+	 *            La grille
 	 * 
 	 */
-	public Grille(int hauteur, int largeur, boolean contours, int[] t) {
+	public Grille(int hauteur, int largeur, boolean contours, Integer[] t) {
 		hauteur = hauteur <= 0 ? 1 : hauteur;
 		largeur = largeur <= 0 ? 1 : largeur;
 		grille = new int[2 * hauteur + 1][2 * largeur + 1];
@@ -186,8 +187,10 @@ public class Grille implements Etat {
 	/**
 	 * Determine si un carre est present aux coordonnees passees
 	 * 
-	 * @param x Coord H
-	 * @param y Coord V
+	 * @param x
+	 *            Coord H
+	 * @param y
+	 *            Coord V
 	 * @return True si un carre est detecte sur les coordonnees x y /False
 	 */
 	private boolean carreComplet(int x, int y) {
@@ -197,19 +200,19 @@ public class Grille implements Etat {
 		int[][] t;
 		if (y % 2 == 0)
 			t = new int[][] { { -1, -1 }, { 0, -2 }, { 1, -1 } };
-		else
-			t = new int[][] { { -1, -1 }, { -2, 0 }, { -1, 1 } };
-		for (int s = -1; s <= 1; s += 2) {
-			boolean complet = true;
-			int i = 0;
-			while (complet && i < t.length) {
-				complet = get(x + s * t[i][0], y + s * t[i][1]) == JOUER;
-				i++;
-			}
-			if (complet)
-				return true;
-		}
-		return false;
+			else
+				t = new int[][] { { -1, -1 }, { -2, 0 }, { -1, 1 } };
+				for (int s = -1; s <= 1; s += 2) {
+					boolean complet = true;
+					int i = 0;
+					while (complet && i < t.length) {
+						complet = get(x + s * t[i][0], y + s * t[i][1]) == JOUER;
+						i++;
+					}
+					if (complet)
+						return true;
+				}
+				return false;
 
 	}
 
@@ -254,20 +257,20 @@ public class Grille implements Etat {
 			for (int j = 0; j < grille[i].length; j++) {
 				switch (grille[i][j]) {
 				case VIDE:
-					sb.append(" ");
+					sb.append("  ");
 					break;
 				case BLOQUE:
 					if (i % 2 == 0)
-						sb.append(".");
+						sb.append(". ");
 					else
-						sb.append(" ");
+						sb.append("  ");
 					break;
 
 				case JOUER:
 					if (i % 2 == 0)
-						sb.append("-");
+						sb.append("- ");
 					else
-						sb.append("|");
+						sb.append("| ");
 					break;
 				}
 			}

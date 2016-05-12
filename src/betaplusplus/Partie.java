@@ -100,7 +100,7 @@ public class Partie {
      *            Parametre qui enclenche l'impression des etapes successives de
      *            la partie
      */
-    public void nouvellePartie(boolean bavard, int personne) {
+    public void nouvellePartie(boolean bavard) {
 	points.set(0, 0);
 	points.set(1, 0);
 	Grille etape = racine;
@@ -108,10 +108,12 @@ public class Partie {
 	int nbc;
 	Random random = new Random();
 	while (!etape.isPlein()) {
-	    if (bavard && personne==1) {
+	    if ((joueurs.get(j).getClass()).equals(Humain.class)) {
 		// imodifier selon pour avoir un beau truc
 		System.out.println("A vous de jouer");
 		System.out.println(etape);
+	    }else{
+	    	System.out.println("L'IA joue");
 	    }
 	    Iterable<Grille> it = joueurs.get(j).get(etape);
 	    ArrayList<Grille> suivants = new ArrayList<>();
@@ -124,13 +126,13 @@ public class Partie {
 	    j = (j + 1) % joueurs.size();
 	    points.set(j, points.get(j) + nbC.get(etape) - nbc);
 	    System.out.println(etape);
-	    if (personne==2) {
-	    	System.out.println("Vous avez "+points.get(1)+" points\nL'IA a "+points.get(0)+" points\n");
-	    }else{
+	    if ((joueurs.get(j).getClass()).equals(Humain.class)) {
 	    	System.out.println("Vous avez "+points.get(0)+" points\nL'IA a "+points.get(1)+" points\n");
+	    }else{
+	    	System.out.println("Vous avez "+points.get(1)+" points\nL'IA a "+points.get(0)+" points\n");
 	    }
 	}
-	if (personne==1) {
+	if ((joueurs.get(0).getClass()).equals(Humain.class)) {
 		if(points.get(1)>points.get(0)){
 			System.out.println("L'IA gagne!");
 		}else{

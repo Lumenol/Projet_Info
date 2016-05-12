@@ -17,8 +17,8 @@ public class Pipopipette {
 					+ "java -jar pipopipette.jar –joue joueur strategie offre la possibilité de jouer sur la console de manière interactive. Le paramètre joueur vaut soit 1 ou 2 : 1 indique que l’humain commence, 2 que c’est l’ordinateur. Les valeurs possibles de strategie sont donnés dans la partie « Stratégies élémentaires »\n"
 					+ "java -jar pipopipette.jar -cal strategie calcule une stratégie optimum face à un joueur suivant la stratégie passée en paramètre. La commande renvoie le résultat au format pip (voir l’exemple simple C3x3.pip)\n"
 					+ "java -jar pipopipette.jar –cal -graphe strategie calcule une stratégie optimum face un joueur suivant la stratégie passée en paramètre. La commande renvoie le résultat le graphe réduit au format dot et la pondération des configurations définissant la stratégie calculée.\n"
-					+ "java -jar pipopipette.jar -apprend parametres strategie calcule une stratégie par une méthode d’apprentissage (détail à venir).\n"
-					+ "java -jar pipopipette.jar -eval strategie strategie évalue les deux stratégies en paramètre de manière exacte et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons.\n"
+					+ "java -jar pipopipette.jar -apprend N alpha gready strategie calcule une stratégie par une méthode d’apprentissage en faisant en sorte que l’apprenti et le stratège commence chacun leur tour. Les paramètres de l’apprentissage sont : N est le nombre de parties, alpha est le taux d’apprentissage (compris en 0 et 1), gready vaut 1 si la technique du ε-gready est utilisé sinon il vaut 1.\n"
+					+ "java -jar pipopipette.jar -eval strategie strategie évalue les deux stratégies en paramètre de manière exacte en faisant commencer la première stratégie passée en paramètre et renvoie le nombre moyen de carrés complétés par la premièrestratégie.\n"
 					+ "java -jar pipopipette.jar -simul N strategie strategie évalue les deux stratégies en paramètre par simulation en lançant N parties et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons..\n");
 			break;
 		case "-graphe":
@@ -37,9 +37,9 @@ public class Pipopipette {
 			System.out.println("");
 		}else{
 			switch (args[2]){
-			case "simplet": ; System.out.println((new ToDot<Grille>(new Simplet())).get(cal()));; break;
-			case "prevoyant": System.out.println((new ToDot<Grille>(new Prevoyant())).get(cal()));; break;
-			case "idiot": System.out.println((new ToDot<Grille>(new Idiot())).get(cal()));; break;
+			case "-simplet": ; System.out.println((new ToDot<Grille>(new Simplet())).get(cal()));; break;
+			case "-prevoyant": System.out.println((new ToDot<Grille>(new Prevoyant())).get(cal()));; break;
+			case "-idiot": System.out.println((new ToDot<Grille>(new Idiot())).get(cal()));; break;
 			}; break;
 		}; break;
 		case "-apprend": System.out.println("Non finis1"); break;
@@ -63,7 +63,7 @@ public class Pipopipette {
 		}else{
 			c = new Partie(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours), ia, a);
 		}
-		c.nouvellePartie(true, Integer.parseInt(joueur));
+		c.nouvellePartie(true);
 		sc.close();
 	}
 	public static Grille cal() {

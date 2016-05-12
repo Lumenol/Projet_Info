@@ -6,19 +6,15 @@ package betaplusplus;
  */
 public class Simulation {
 	/**
-	 * Constructeur de la simulation
+	 * Lanceur de la simulation en non bavard
 	 * 
-	 * @param hauteur
-	 *            hauteur de la grille
-	 * @param largeur
-	 *            largeur de la grille
+	 * @param hauteur hauteur de la grille
+	 * @param largeur largeur de la grille
 	 * @param contours
-	 * @param n
-	 * @param j1
-	 *            Joueur 1
-	 * @param j2
-	 *            Joueur 2
-	 * @return
+	 * @param n 
+	 * @param j1 Joueur 1
+	 * @param j2 Joueur 2
+	 * @return 
 	 */
 	public static float simulation(int hauteur, int largeur, boolean contours, int n,
 			Fonction<Grille, Iterable<Grille>> j1, Fonction<Grille, Iterable<Grille>> j2) {

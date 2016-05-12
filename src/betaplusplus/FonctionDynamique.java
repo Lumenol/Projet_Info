@@ -30,8 +30,7 @@ public class FonctionDynamique<E, F> implements Fonction<E, F> {
 	}
 
 	/**
-	 * @param x
-	 *            Cle a chercher dans la map
+	 * @param x Cle a chercher dans la map
 	 * @return Valeur associee
 	 */
 	public F get(E x) {
@@ -44,11 +43,11 @@ public class FonctionDynamique<E, F> implements Fonction<E, F> {
 	}
 
 	/**
-	 * Ajout (cle,valeur) a la map
+	 * Ajout de (cle,valeur) a la map
 	 * 
-	 * @param key
-	 * @param value
-	 * @return
+	 * @param key cle associee
+	 * @param value valeur associee
+	 * @return structure (Hashmap) aggrementee de k,v
 	 */
 	public F put(E key, F value) {
 		return memoire.put(key, value);

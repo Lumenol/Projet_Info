@@ -23,8 +23,8 @@ public class Grille implements Etat {
 	/**
 	 * Constructeur de l'objet Grille
 	 * 
-	 * @param hauteur
-	 * @param largeur
+	 * @param hauteur la largeur de la grille
+	 * @param largeur la largeur de la grille
 	 * @param contours
 	 *            affichage des contours (ou pas)
 	 */
@@ -36,7 +36,7 @@ public class Grille implements Etat {
 	 * Contruit la Grille suivant les parametres passes
 	 * 
 	 * @param hauteur
-	 *            determine la hauteur de la grille
+	 *            determine C
 	 * @param largeur
 	 *            determine la largeur de la grille
 	 * @param contours
@@ -74,6 +74,10 @@ public class Grille implements Etat {
 		}
 	}
 
+	
+	/**
+	 * java doc objet ==
+	 * */
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -109,6 +113,7 @@ public class Grille implements Etat {
 	}
 
 	/*
+	 * jd1.8
 	 * (non-Javadoc) Fonction de hachage pour la grille incluant les rotations
 	 */
 	@Override
@@ -145,9 +150,10 @@ public class Grille implements Etat {
 		return true;
 	}
 
+	
 	@Override
 	public String label() {
-		// TODO Auto-generated method stub
+		
 		return toString(true);
 	}
 
@@ -159,7 +165,7 @@ public class Grille implements Etat {
 
 	}
 
-	/**
+	/**Place JOUER  aux coordonnees x,y
 	 * @param x
 	 *            Coordonnee h
 	 * @param y
@@ -173,7 +179,7 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * Renplissage de la grille de jeu valeur jouer a toute case de this.grille
+	 * Completion automatique des carres
 	 */
 	public void RempliCarres() {
 		for (int i = 0; i < largeur(); i++) {
@@ -187,18 +193,21 @@ public class Grille implements Etat {
 		}
 	}
 
+	/* (non-Javadoc)
+	 * @see java.lang.Object#toString()
+	 */
 	public String toString() {
 		return toString(false);
 	}
 
 	/**
-	 * Determine si un carre est present aux coordonnees passees
+	 * Determine si un carre est ferme aux coordonnees passees
 	 * 
 	 * @param x
 	 *            Coord H
 	 * @param y
 	 *            Coord V
-	 * @return True si un carre est detecte sur les coordonnees x y /False
+	 * @return True si un carre est ferme sur les coordonnees x y / False
 	 */
 	private boolean carreComplet(int x, int y) {
 		if (get(x, y) != VIDE) {
@@ -226,7 +235,7 @@ public class Grille implements Etat {
 	/**
 	 * @param t
 	 *            grille
-	 * @return La grille t pivotee
+	 * @return La grille t pivotee d'un 1/4 de tour a droite
 	 */
 	private int[][] rotation(int[][] t) {
 		int[][] r = new int[t[t.length - 1].length][t.length];
@@ -241,7 +250,7 @@ public class Grille implements Etat {
 	/**
 	 * @param t
 	 *            grille
-	 * @return La grille t en symetrique
+	 * @return La grille t en symetrique centrale
 	 */
 	private int[][] symetrique(int[][] t) {
 		int[][] t2 = new int[t.length][t[t.length - 1].length];
@@ -254,9 +263,9 @@ public class Grille implements Etat {
 
 	}
 
-	/**
-	 * @param toDot
-	 * @return
+	/** Imprime la grille
+	 * @param toDot format
+	 * @return affichage de la grille
 	 */
 	private String toString(boolean toDot) {
 		StringBuffer sb = new StringBuffer();

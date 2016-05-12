@@ -5,10 +5,16 @@ import java.util.Scanner;
 
 public class Humain implements Fonction<Grille, Iterable<Grille>> {
 
+   
     public Humain() {
 
     }
 
+    /**
+     * @param z grille
+     * @return hashset contenant la grille jouee
+     *
+     */
     @Override
     public Iterable<Grille> get(Grille z) {
 	Grille grille = new Grille(z);

@@ -112,8 +112,6 @@ public class Partie {
 		// imodifier selon pour avoir un beau truc
 		System.out.println("A vous de jouer");
 		System.out.println(etape);
-	    }else{
-	    	System.out.println("L'IA joue");
 	    }
 	    Iterable<Grille> it = joueurs.get(j).get(etape);
 	    ArrayList<Grille> suivants = new ArrayList<>();
@@ -125,6 +123,13 @@ public class Partie {
 	    etape = suivants.get(random.nextInt(suivants.size()));
 	    j = (j + 1) % joueurs.size();
 	    points.set(j, points.get(j) + nbC.get(etape) - nbc);
+	    System.out.println(etape);
+	    System.out.println("Vous avez "+points.get(0)+" points\nL'IA a "+points.get(1)+" points\n");
+	}
+	if(points.get(1)>points.get(0)){
+		System.out.println("L'IA gagne!");
+	}else{
+		System.out.println("Vous avez gagné!");
 	}
     }
 

@@ -33,7 +33,7 @@ public class Partie {
 		try {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			if (st.countTokens() != 3)
-				throw new IllegalFormatFlagsException("Il manque des information");
+				throw new IllegalFormatFlagsException("Il manque des informations");
 			switch (st.nextToken()) {
 			case "S":
 				type = false;
@@ -42,7 +42,7 @@ public class Partie {
 				type = true;
 				break;
 			default:
-				throw new IllegalFormatFlagsException("Le type est incorect");
+				throw new IllegalFormatFlagsException("Le type est incorrect");
 			}
 			hauteur = Integer.parseInt(st.nextToken());
 			largeur = Integer.parseInt(st.nextToken());

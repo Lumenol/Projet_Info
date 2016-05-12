@@ -10,7 +10,7 @@ public class NombreCarre extends FonctionDynamique<Grille, Integer> {
 			/**
 			 * (non-Javadoc)
 			 * 
-			 * @param x
+			 * @param x 
 			 *            grille
 			 * @return le nombre de carres dans la grille (int)
 			 */

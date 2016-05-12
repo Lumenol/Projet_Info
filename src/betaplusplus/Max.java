@@ -33,7 +33,9 @@ public class Max<T> implements Fonction<T, Float> {
 		v2 = V2;
 	}
 
-	/*
+	/**
+	 * @param x
+	 * @return 
 	 * (non-Javadoc)
 	 *
 	 * @see betaplusplus.Fonction#get(java.lang.Object)

@@ -25,18 +25,22 @@ public class Grille implements Etat {
 	 * 
 	 * @param hauteur
 	 * @param largeur
-	 * @param contours affichage des contours (ou pas)
+	 * @param contours
+	 *            affichage des contours (ou pas)
 	 */
 	public Grille(int hauteur, int largeur, boolean contours) {
 		this(hauteur, largeur, contours, null);
 	}
 
 	/**
-	 * Contruit la Grille suivant les parametres pass�s
+	 * Contruit la Grille suivant les parametres passes
 	 * 
 	 * @param hauteur
+	 *            determine la hauteur de la grille
 	 * @param largeur
-	 * @param contours affichage des contours (ou pas)
+	 *            determine la largeur de la grille
+	 * @param contours
+	 *            affichage des contours (ou pas)
 	 * @param t
 	 *            La grille
 	 * 
@@ -89,8 +93,10 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * @param x coord h
-	 * @param y coord v
+	 * @param x
+	 *            coord h
+	 * @param y
+	 *            coord v
 	 * @return valeur de la grille aux coordonnees x y (vide / jouer )/ bloque
 	 *         si innaccessible
 	 */
@@ -118,7 +124,7 @@ public class Grille implements Etat {
 		return hash;
 	}
 
-	/**
+	/**Getter de hauteur
 	 * @return La hauteur de la grille
 	 */
 	public int hauteur() {
@@ -126,7 +132,7 @@ public class Grille implements Etat {
 
 	}
 
-	/**
+	/**Determine la grille pleine
 	 * @return Faux si au moins une case de la grille est vide
 	 */
 	public boolean isPlein() {
@@ -145,7 +151,7 @@ public class Grille implements Etat {
 		return toString(true);
 	}
 
-	/**
+	/**Getter de largeur
 	 * @return La valeur de Largeur
 	 */
 	public int largeur() {
@@ -154,8 +160,10 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * @param x Coordonnee h
-	 * @param y Coordonnee v
+	 * @param x
+	 *            Coordonnee h
+	 * @param y
+	 *            Coordonnee v
 	 * 
 	 */
 	public void placer(int x, int y) {
@@ -165,8 +173,7 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * Renplissage de la grille de jeu
-	 * valeur jouer a toute case de this.grille
+	 * Renplissage de la grille de jeu valeur jouer a toute case de this.grille
 	 */
 	public void RempliCarres() {
 		for (int i = 0; i < largeur(); i++) {
@@ -174,7 +181,7 @@ public class Grille implements Etat {
 				if (carreComplet(i, j)) {
 					placer(i, j);
 					RempliCarres();
-					//return;
+					// return;
 				}
 			}
 		}
@@ -200,19 +207,19 @@ public class Grille implements Etat {
 		int[][] t;
 		if (y % 2 == 0)
 			t = new int[][] { { -1, -1 }, { 0, -2 }, { 1, -1 } };
-			else
-				t = new int[][] { { -1, -1 }, { -2, 0 }, { -1, 1 } };
-				for (int s = -1; s <= 1; s += 2) {
-					boolean complet = true;
-					int i = 0;
-					while (complet && i < t.length) {
-						complet = get(x + s * t[i][0], y + s * t[i][1]) == JOUER;
-						i++;
-					}
-					if (complet)
-						return true;
-				}
-				return false;
+		else
+			t = new int[][] { { -1, -1 }, { -2, 0 }, { -1, 1 } };
+		for (int s = -1; s <= 1; s += 2) {
+			boolean complet = true;
+			int i = 0;
+			while (complet && i < t.length) {
+				complet = get(x + s * t[i][0], y + s * t[i][1]) == JOUER;
+				i++;
+			}
+			if (complet)
+				return true;
+		}
+		return false;
 
 	}
 
@@ -232,7 +239,8 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * @param t grille
+	 * @param t
+	 *            grille
 	 * @return La grille t en symetrique
 	 */
 	private int[][] symetrique(int[][] t) {

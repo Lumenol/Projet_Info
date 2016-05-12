@@ -13,7 +13,10 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 	    Fonction<Grille, Integer> p = poids;
 	    Simplet simplet = new Simplet();
 	    NombreCarre nbC = new NombreCarre();
-
+/**
+ * @param x 
+ * @return 
+ */
 	    @Override
 	    public Iterable<Grille> get(Grille x) {
 		LinkedList<Grille> retour = new LinkedList<>();
@@ -34,7 +37,6 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 	    }
 	});
 
-	// TODO Auto-generated constructor stub
 
     }
 

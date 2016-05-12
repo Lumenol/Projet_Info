@@ -14,7 +14,9 @@ public class Idiot extends AbstractSuccesseurs<Grille> {
 			private Simplet simplet = new Simplet();
 			private NombreCarre nbC = new NombreCarre();
 
-			/*
+			/**
+			 * @param x
+			 * @return
 			 * (non-Javadoc)
 			 * 
 			 * @see betaplusplus.Fonction#get(java.lang.Object)

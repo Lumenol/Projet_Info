@@ -26,52 +26,49 @@ public class Pipopipette {
 			break;// a finir :S
 		case "-joue":
 			switch (args[1]) {
-			case "-simplet":
-				jeuSimplet();
-				break;
-			case "-prevoyant":
-				jeu();
-				break;
-			case "-idiot":
-				jeu();
-				break;
-			case "-pondere":
-				jeu();
-				break;
+			case "-simplet": jeu(new Simplet()); break;
+			case "-prevoyant": jeu(new Prevoyant()); break;
+			case "-idiot": jeu(new Idiot()); break;
+			case "-pondere": break;// a finir :S
 			}
 			;
 			break;
-		case "-cal":
-			;
-			break;
-		case "-apprend":
-			;
-			break;
-		case "-eval":
-			;
-			break;
-		case "-simul":
-			;
-			break;
+		case "-cal": if (args[1].equals("-graphe")){
+			System.out.println("coucou45");
+		}else{
+			switch (args[2]){
+			case "simplet": ; System.out.println((new ToDot<Grille>(new Simplet())).get(cal()));; break;
+			case "prevoyant": System.out.println((new ToDot<Grille>(new Prevoyant())).get(cal()));; break;
+			case "idiot": System.out.println((new ToDot<Grille>(new Idiot())).get(cal()));; break;
+			}; break;
+		}
+		case "-apprend": ; break;
+		case "-eval": ; break;
+		case "-simul": ; break;
 		}
 	}
 
-	private static void jeu() {
-		// TODO Auto-generated method stub
-
-	}
-
-	public static void jeuSimplet() {
+	public static void jeu(Fonction<Grille, Iterable<Grille>> ia) {
 		Scanner sc = new Scanner(System.in);
 		Humain a = new Humain();
-		Simplet b = new Simplet();
 		System.out.println("Hauteur de grille :");
 		int hauteur_de_grille = sc.nextInt();
 		System.out.println("Largeur de grille :");
 		int Largeur_de_grille = sc.nextInt();
 		System.out.println("Voulez vous des contours sur votre grille? : (true/false)");
 		String contours = sc.next();
-		Partie c = new Partie(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours), a, b);
+		Partie c = new Partie(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours), a, ia);
 		c.nouvellePartie(true);
 	}
+	public static Grille cal() {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Hauteur de grille :");
+		int hauteur_de_grille = sc.nextInt();
+		System.out.println("Largeur de grille :");
+		int Largeur_de_grille = sc.nextInt();
+		System.out.println("Voulez vous des contours sur votre grille? : (true/false)");
+		String contours = sc.next();
+		return new Grille(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours));
+	}
+
 }

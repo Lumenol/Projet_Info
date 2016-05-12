@@ -20,8 +20,8 @@ public class Prevoyant extends AbstractSuccesseurs<Grille> {
 
 			/**
 			 * (non-Javadoc)
-			 * @return
-			 * @param x grille
+			 * @return Liste chainee de coups joues par un joueur type prevoyant
+			 * @param x grille d'origine
 			 * @see betaplusplus.Fonction#get(java.lang.Object)
 			 */
 			@Override

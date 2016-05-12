@@ -16,8 +16,8 @@ public class Simplet extends AbstractSuccesseurs<Grille> {
 
 			/**
 			 * 
-			 * @return 
-			 * @param x grille
+			 * @return Hashset de coups successifs joues par un joueur type simplet
+			 * @param x grille d'origine
 			 * @see betaplusplus.Fonction#get(java.lang.Object)
 			 */
 			@Override

@@ -16,9 +16,9 @@ public class IdiotTest {
 	public void testGet() {
 		//on perd 4 carrés
 		Idiot id = new Idiot();
-		int [] t = {0,0,0,1,0,0,0,1,0,0,1,0};
+		Integer [] t = {0,0,0,1,0,0,0,1,0,0,1,0};
 		Grille g = new Grille(3,3,true,t);
-		int [] t2 = {1,1,1,1,1,1,0,1,0,0,1,0,0};
+		Integer [] t2 = {1,1,1,1,1,1,0,1,0,0,1,0,0};
 		Grille g2 = new Grille(3,3,true,t2);
 		LinkedList<Grille> l = (LinkedList<Grille>) id.get(g);
 		if (!l.contains(g2)){
@@ -26,9 +26,9 @@ public class IdiotTest {
 		}
 		//on perd 3 carrés
 		Idiot id2 = new Idiot();
-		int [] t3 = {0,0,1,0,0,0,0,0,0,0,0,0};
+		Integer [] t3 = {0,0,1,0,0,0,0,0,0,0,0,0};
 		Grille g3 = new Grille(3,3,true,t3);
-		int [] t4 = {1,0,1,0,0,1,0,1,0,0,1,0};
+		Integer [] t4 = {1,0,1,0,0,1,0,1,0,0,1,0};
 		Grille g4 = new Grille(3,3,true,t4);
 		LinkedList<Grille> l2 = (LinkedList<Grille>) id2.get(g3);
 		if (!l2.contains(g4)){
@@ -36,9 +36,9 @@ public class IdiotTest {
 		}
 		//on gagne 1 carré et on en perd 8
 		Idiot id3 = new Idiot();
-		int [] t5 = {0,0,0,1,0,1,1,0,0,0,0,0};
+		Integer [] t5 = {0,0,0,1,0,1,1,0,0,0,0,0};
 		Grille g5 = new Grille(3,3,true,t5);
-		int [] t6 = {1,1,1,1,1,1,1,1,1,1,1,1};
+		Integer [] t6 = {1,1,1,1,1,1,1,1,1,1,1,1};
 		Grille g6 = new Grille(3,3,true,t6);
 		LinkedList<Grille> l3 = (LinkedList<Grille>) id3.get(g5);
 		if (!l3.contains(g6)){

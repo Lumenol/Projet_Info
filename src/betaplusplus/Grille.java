@@ -88,10 +88,8 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * @param x
-	 *            coord h
-	 * @param y
-	 *            coord v
+	 * @param x coord h
+	 * @param y coord v
 	 * @return valeur de la grille aux coordonnees x y (vide / jouer )/ bloque
 	 *         si innaccessible
 	 */
@@ -155,10 +153,8 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * @param x
-	 *            Coordonnee h
-	 * @param y
-	 *            Coordonnee v
+	 * @param x Coordonnee h
+	 * @param y Coordonnee v
 	 * 
 	 */
 	public void placer(int x, int y) {
@@ -168,7 +164,8 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * 
+	 * Renplissage de la grille de jeu
+	 * valeur jouer a toute case de this.grille
 	 */
 	public void RempliCarres() {
 		for (int i = 0; i < largeur(); i++) {
@@ -176,7 +173,7 @@ public class Grille implements Etat {
 				if (carreComplet(i, j)) {
 					placer(i, j);
 					RempliCarres();
-					return;
+					//return;
 				}
 			}
 		}

@@ -16,13 +16,13 @@ import java.util.StringTokenizer;
  */
 public class Partie {
 
-	/**
-	 * @param j1
-	 * @param pip
-	 * @return
-	 * @throws FileNotFoundException
-	 * @throws IllegalFormatException
-	 * @throws NumberFormatException
+	/**Lit le fichier .pip et cree la partie de jeu selon les parameres du joueur 
+	 * @param j1 Type de joueur (idiot, humain , simplet , pondere , prevoyant )
+	 * @param pip nom du fichier 
+	 * @return nouvelle partie selon le type de joueur
+	 * @throws FileNotFoundException Si le fichier pip n'est pas present
+	 * @throws IllegalFormatException Si le fichier n'est pas en .pip
+	 * @throws NumberFormatException Si les donnees ne corespondent pas (?)
 	 */
 	public static Partie fromPip(Fonction<Grille, Iterable<Grille>> j1, String pip)
 			throws FileNotFoundException, IllegalFormatException, NumberFormatException {
@@ -85,7 +85,7 @@ public class Partie {
 		points.add(0);
 	}
 
-	/**
+	/**Getter des points du joueur j
 	 * @param j
 	 *            Joueur
 	 * @return Le nombre de points attribues au joueur j 
@@ -98,6 +98,9 @@ public class Partie {
 		}
 	}
 
+	/**Getter de la premiere grille initialisee
+	 * @return la grille la grille originelle (vide)
+	 */
 	public Grille getRacine() {
 		return racine;
 	}
@@ -107,7 +110,7 @@ public class Partie {
 	 *
 	 * @param bavard
 	 *            Parametre qui enclenche l'impression des etapes successives de
-	 *            la partie
+	 *            la partie, et declenche l'interaction joueur-jeu
 	 */
 	public void nouvellePartie(boolean bavard) {
 		points.set(0, 0);

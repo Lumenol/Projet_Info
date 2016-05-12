@@ -11,8 +11,8 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 	/**
 	 * Constructeur de l'objet Moyenne
 	 * 
-	 * @param successeurs
-	 * @param nombreCarre
+	 * @param successeurs Les successeurs
+	 * @param nombreCarre fonction passee
 	 * @param V1  
 	 */
 	public Moyenne(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V1) {
@@ -25,8 +25,8 @@ public class Moyenne<T> extends FonctionDynamique<T, Float> {
 			/**
 			 * (non-Javadoc)
 			 * 
-			 * @param x
-			 * @return
+			 * @param x 
+			 * @return 
 			 */
 			@Override
 			public Float get(T x) {

@@ -11,9 +11,9 @@ public class Max<T> implements Fonction<T, Float> {
 	private Fonction<T, Integer> nbCarre;
 	private Fonction<T, Float> v2;
 
-	/**
-	 * @param successeurs
-	 * @param nombreCarre
+	/**Constructeur de Max
+	 * @param successeurs Les successeurs 
+	 * @param nombreCarre fonction passee 
 	 */
 	public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre) {
 		this(successeurs, nombreCarre, null);
@@ -21,10 +21,10 @@ public class Max<T> implements Fonction<T, Float> {
 	}
 
 	/**
-	 * Constructeur del'objet Max
+	 * Constructeur de l'objet Max
 	 *
-	 * @param successeurs
-	 * @param nombreCarre
+	 * @param successeurs les successeurs
+	 * @param nombreCarre fonction nbCarre
 	 * @param V2
 	 */
 	public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V2) {
@@ -34,8 +34,8 @@ public class Max<T> implements Fonction<T, Float> {
 	}
 
 	/**
-	 * @param x
-	 * @return 
+	 * @param x 
+	 * @return successeur pour le joueur qui le plus de carres
 	 * (non-Javadoc)
 	 *
 	 * @see betaplusplus.Fonction#get(java.lang.Object)
@@ -59,11 +59,10 @@ public class Max<T> implements Fonction<T, Float> {
 	}
 
 	/**
-	 * @param V2
+	 * @param V2 (?)
 	 */
 	public void setV2(Fonction<T, Float> V2) {
 		v2 = V2;
 	}
 
-	// TODO Auto-generated constructor stub
 }

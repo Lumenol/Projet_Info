@@ -34,17 +34,17 @@ public class Pipopipette {
 			;
 			break;
 		case "-cal": if (args[1].equals("-graphe")){
-			System.out.println("coucou45");
+			System.out.println("");
 		}else{
 			switch (args[2]){
 			case "simplet": ; System.out.println((new ToDot<Grille>(new Simplet())).get(cal()));; break;
 			case "prevoyant": System.out.println((new ToDot<Grille>(new Prevoyant())).get(cal()));; break;
 			case "idiot": System.out.println((new ToDot<Grille>(new Idiot())).get(cal()));; break;
 			}; break;
-		}
-		case "-apprend": ; break;
-		case "-eval": ; break;
-		case "-simul": ; break;
+		}; break;
+		case "-apprend": System.out.println("Non finis1"); break;
+		case "-eval": System.out.println("Non finis2"); break;
+		case "-simul": System.out.println("Non finis3"); break;
 		}
 	}
 
@@ -59,6 +59,7 @@ public class Pipopipette {
 		String contours = sc.next();
 		Partie c = new Partie(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours), a, ia);
 		c.nouvellePartie(true);
+		sc.close();
 	}
 	public static Grille cal() {
 		Scanner sc = new Scanner(System.in);
@@ -68,6 +69,7 @@ public class Pipopipette {
 		int Largeur_de_grille = sc.nextInt();
 		System.out.println("Voulez vous des contours sur votre grille? : (true/false)");
 		String contours = sc.next();
+		sc.close();
 		return new Grille(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours));
 	}
 

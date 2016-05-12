@@ -10,7 +10,7 @@ public class Simulation {
 	 * 
 	 * @param hauteur hauteur de la grille
 	 * @param largeur largeur de la grille
-	 * @param contours
+	 * @param contours  affichage des contours (ou pas)
 	 * @param n 
 	 * @param j1 Joueur 1
 	 * @param j2 Joueur 2

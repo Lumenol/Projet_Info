@@ -10,12 +10,22 @@ import java.util.StringTokenizer;
 
 public class Poids extends FonctionDynamique<Grille, Integer> {
 
+    /**
+     * @param pip
+     * @throws FileNotFoundException
+     * @throws NumberFormatException
+     */
     public Poids(String pip) throws FileNotFoundException, NumberFormatException {
 	super(new Fonction<Grille, Integer>() {
 
+	    /** 
+	     * @return
+	     * @param x grille
+	     * @see betaplusplus.Fonction#get(java.lang.Object)
+	     */
 	    @Override
 	    public Integer get(Grille x) {
-		// TODO Auto-generated method stub
+		
 		return 0;
 	    }
 	});
@@ -63,11 +73,11 @@ public class Poids extends FonctionDynamique<Grille, Integer> {
 		Integer[] t = new Integer[1];
 		put(new Grille(hauteur, largeur, type, tab.toArray(t)), Integer.parseInt(st.nextToken()));
 	    }
-
+	//br.close();
 	} catch (IOException e) {
 	}
 
-	// TODO Auto-generated constructor stub
+
     }
 
 }

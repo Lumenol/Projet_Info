@@ -2,8 +2,11 @@ package betaplusplus;
 
 import java.util.Scanner;
 
+
+
 public class Pipopipette {
 
+	
 	public static void main(String[] args) {
 		switch (args[0]) {
 		case "-name": System.out.println("Roche Julie\nCrédevlle Louis-Maxime\nVincent Renard\nBovie Pierre-Edouard\n"); break;
@@ -26,7 +29,7 @@ public class Pipopipette {
 			case "-simplet": jeu(new Simplet(),args[1]); break;
 			case "-prevoyant": jeu(new Prevoyant(),args[1]); break;
 			case "-idiot": jeu(new Idiot(),args[1]); break;
-			case "-pondere": break;// a finir :S
+			case "-pondere": break;//TODO a finir :S
 			}; break;
 		case "-cal":
 			if (args[1].equals("-graphe")){
@@ -78,6 +81,10 @@ public class Pipopipette {
 		}
 	}
 
+	/**
+	 * @param ia
+	 * @param joueur Nombre de joueurs
+	 */
 	public static void jeu(Fonction<Grille, Iterable<Grille>> ia, String joueur) {
 		Scanner sc = new Scanner(System.in);
 		Humain a = new Humain();
@@ -96,6 +103,9 @@ public class Pipopipette {
 		c.nouvellePartie(true);
 		sc.close();
 	}
+	/**Configuration de la grille de jeu
+	 * @return une grille avec la configuration desiree
+	 */
 	public static Grille cal() {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Hauteur de grille :");

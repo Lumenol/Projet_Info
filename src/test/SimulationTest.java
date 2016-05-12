@@ -14,7 +14,7 @@ public class SimulationTest {
 
 	@Test
 	public void testSimulation() {
-		//4 parties entre Prevoyant et Idiot (3x)
+		//4 parties entre Prevoyant et Idiot (3x3)
 		Prevoyant prev = new Prevoyant();
 		Idiot id = new Idiot();
 		float sim = Simulation.simulation(3,3,true,4,prev,id);

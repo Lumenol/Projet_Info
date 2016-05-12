@@ -19,7 +19,8 @@ public class Pipopipette {
 					+ "java -jar pipopipette.jar -eval strategie strategie évalue les deux stratégies en paramètre de manière exacte en faisant commencer la première stratégie passée en paramètre et renvoie le nombre moyen de carrés complétés par la premièrestratégie.\n"
 					+ "java -jar pipopipette.jar -simul N strategie strategie évalue les deux stratégies en paramètre par simulation en lançant N parties et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons..\n");
 			break;
-		case "-graphe": Grille g = new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Boolean.parseBoolean(args[1])); break;// a finir :S
+		case "-graphe": ToDot<Grille> dot = new ToDot<Grille>(new Simplet());
+		System.out.println(dot.get(new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Boolean.parseBoolean(args[1]))));break;// a finir :S
 		case "-joue":
 			switch (args[2]) {
 			case "-simplet": jeu(new Simplet(),args[1]); break;
@@ -29,13 +30,14 @@ public class Pipopipette {
 			}; break;
 		case "-cal":
 			if (args[1].equals("-graphe")){
-				System.out.println("");
-			}else{
 				switch (args[2]){
-				case "-simplet": ; System.out.println((new ToDot<Grille>(new Simplet())).get(cal()));; break;
-				case "-prevoyant": System.out.println((new ToDot<Grille>(new Prevoyant())).get(cal()));; break;
-				case "-idiot": System.out.println((new ToDot<Grille>(new Idiot())).get(cal()));; break;
-				};
+				case "-simplet": ; break;
+				case "-prevoyant": ; break;
+				case "-idiot": ; break;
+				//System.out.println((new ToDot<Grille>(new Simplet())).get(cal()));
+				}
+			}else{
+				System.out.println("");
 			}; break;
 		case "-apprend": System.out.println("Non finis1"); break;
 		case "-eval": System.out.println("Non finis2"); break;
@@ -43,27 +45,27 @@ public class Pipopipette {
 			switch (args[2]) {
 			case "-simplet":
 				switch (args[3]) {
-				case "-simplet": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),new Simplet()); break;
-				case "-prevoyant": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),new Prevoyant()); break;
-				case "-idiot": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),new Idiot()); break;
-				/*case "-pondere": new simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),s2); break;*/
-				
+				case "-simplet": System.out.println(Simulation.simulation(2,2,true,Integer.parseInt(args[1]),new Simplet(),new Simplet())); break;
+				case "-prevoyant": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),new Prevoyant())); break;
+				case "-idiot": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),new Idiot())); break;
+				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),s2)); break;*/
+
 				}; break;
 			case "-prevoyant":
 				switch (args[3]) {
-				case "-simplet": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),new Simplet()); break;
-				case "-prevoyant": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant()); break;
-				case "-idiot": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),new Idiot()); break;
-				/*case "-pondere": new simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),s2); break;*/
-				
+				case "-simplet": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),new Simplet())); break;
+				case "-prevoyant": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant())); break;
+				case "-idiot": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())); break;
+				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),s2)); break;*/
+
 				}; break;
 			case "-idiot":
 				switch (args[3]) {
-				case "-simplet": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),new Simplet()); break;
-				case "-prevoyant": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),new Prevoyant()); break;
-				case "-idiot": Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),new Idiot()); break;
-				/*case "-pondere": new simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),s2); break;*/
-				
+				case "-simplet": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),new Simplet())); break;
+				case "-prevoyant": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),new Prevoyant())); break;
+				case "-idiot": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),new Idiot())); break;
+				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),s2)); break;*/
+
 				}; break;
 			case "-pondere":
 				switch (args[3]) {
@@ -73,7 +75,6 @@ public class Pipopipette {
 				case "-pondere": new simulation(3,3,true,Integer.parseInt(args[1]),s1,s2); break;*/
 				}; break;
 			}; break;
-			
 		}
 	}
 

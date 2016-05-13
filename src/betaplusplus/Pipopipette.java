@@ -6,7 +6,7 @@ import java.util.Scanner;
 
 public class Pipopipette {
 
-	
+
 	public static void main(String[] args) {
 		switch (args[0]) {
 		case "-name": System.out.println("Roche Julie\nCrédevlle Louis-Maxime\nVincent Renard\nBovie Pierre-Edouard\n"); break;
@@ -23,7 +23,11 @@ public class Pipopipette {
 					+ "java -jar pipopipette.jar -simul N strategie strategie évalue les deux stratégies en paramètre par simulation en lançant N parties et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons..\n");
 			break;
 		case "-graphe": ToDot<Grille> dot = new ToDot<Grille>(new Simplet());
-		System.out.println(dot.get(new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), Boolean.parseBoolean(args[1]))));break;// a finir :S
+			switch(args[1]){
+			case "C" : System.out.println(dot.get(new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), true))); break;
+			case "S" : System.out.println(dot.get(new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), false))); break;
+			}
+		break;// a finir :S
 		case "-joue":
 			switch (args[2]) {
 			case "-simplet": jeu(new Simplet(),args[1]); break;

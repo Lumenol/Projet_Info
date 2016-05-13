@@ -120,12 +120,14 @@ public class Partie {
 		int nbc;
 		Random random = new Random();
 		while (!etape.isPlein()) {
-			if ((joueurs.get(j).getClass()).equals(Humain.class)) {
-				// imodifier selon pour avoir un beau truc
-				System.out.println("A vous de jouer");
-				System.out.println(etape);
-			} else {
-				System.out.println("L'IA joue");
+			if (bavard==true){
+				if((joueurs.get(j).getClass()).equals(Humain.class)) {
+					// imodifier selon pour avoir un beau truc
+					System.out.println("A vous de jouer");
+					System.out.println(etape);
+				} else {
+					System.out.println("L'IA joue");
+				}
 			}
 			Iterable<Grille> it = joueurs.get(j).get(etape);
 			ArrayList<Grille> suivants = new ArrayList<>();

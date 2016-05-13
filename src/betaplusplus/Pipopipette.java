@@ -63,17 +63,17 @@ public class Pipopipette {
 				}; break;
 			case "-prevoyant":
 				switch (args[6]) {
-				case "-simplet": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Simplet())+" carré(s) complété(s)."); break;
-				case "-prevoyant": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant())+" carré(s) complété(s)."); break;
-				case "-idiot": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())+" carré(s) complété(s)."); break;
+				case "-simplet": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Simplet())+" carré(s) complété(s)."); break;
+				case "-prevoyant": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant())+" carré(s) complété(s)."); break;
+				case "-idiot": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())+" carré(s) complété(s)."); break;
 				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),s2)); break;*/
 
 				}; break;
 			case "-idiot":
 				switch (args[6]) {
-				case "-simplet": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Simplet())+" carré(s) complété(s)."); break;
-				case "-prevoyant": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Prevoyant())+" carré(s) complété(s)."); break;
-				case "-idiot": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Idiot())+" carré(s) complété(s)."); break;
+				case "-simplet": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Simplet())+" carré(s) complété(s)."); break;
+				case "-prevoyant": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Prevoyant())+" carré(s) complété(s)."); break;
+				case "-idiot": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Idiot())+" carré(s) complété(s)."); break;
 				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),s2)); break;*/
 
 				}; break;

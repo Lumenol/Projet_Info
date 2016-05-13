@@ -139,24 +139,29 @@ public class Partie {
 			etape = suivants.get(random.nextInt(suivants.size()));
 			j = (j + 1) % joueurs.size();
 			points.set(j, points.get(j) + nbC.get(etape) - nbc);
-			System.out.println(etape);
+			if (bavard==true){
+				System.out.println(etape);
+			
 			if ((joueurs.get(j).getClass()).equals(Humain.class)) {
 				System.out.println("Vous avez " + points.get(0) + " points\nL'IA a " + points.get(1) + " points\n");
 			} else {
 				System.out.println("Vous avez " + points.get(1) + " points\nL'IA a " + points.get(0) + " points\n");
 			}
-		}
-		if ((joueurs.get(0).getClass()).equals(Humain.class)) {
-			if (points.get(1) > points.get(0)) {
-				System.out.println("L'IA gagne!");
-			} else {
-				System.out.println("Vous avez gagné!");
 			}
-		} else {
-			if (points.get(0) > points.get(1)) {
-				System.out.println("L'IA gagne!");
+		}
+		if (bavard==true){
+			if ((joueurs.get(0).getClass()).equals(Humain.class)) {
+				if (points.get(1) > points.get(0)) {
+					System.out.println("L'IA gagne!");
+				} else {
+					System.out.println("Vous avez gagné!");
+				}
 			} else {
-				System.out.println("Vous avez gagné!");
+				if (points.get(0) > points.get(1)) {
+					System.out.println("L'IA gagne!");
+				} else {
+					System.out.println("Vous avez gagné!");
+				}
 			}
 		}
 	}

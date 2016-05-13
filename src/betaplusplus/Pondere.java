@@ -12,7 +12,8 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 	/**
 	 * Constructeur de Pondere
 	 * 
-	 * @param poids le poids 
+	 * @param poids
+	 *            le poids
 	 */
 	public Pondere(Fonction<Grille, Integer> poids) {
 		super(new Fonction<Grille, Iterable<Grille>>() {
@@ -21,7 +22,7 @@ public class Pondere extends AbstractSuccesseurs<Grille> {
 			NombreCarre nbC = new NombreCarre();
 
 			/**
-			 * Getter liste de coups ponderes
+			 * Getter liste de coups type ponderes
 			 * 
 			 * @param x
 			 *            grille d'origine

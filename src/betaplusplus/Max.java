@@ -35,7 +35,7 @@ public class Max<T> implements Fonction<T, Float> {
 
 	/**
 	 * @param x 
-	 * @return successeur pour le joueur qui le plus de carres
+	 * @return successeur pour le joueur qui ferme le plus de carres (gagnant)
 	 * (non-Javadoc)
 	 *
 	 * @see betaplusplus.Fonction#get(java.lang.Object)

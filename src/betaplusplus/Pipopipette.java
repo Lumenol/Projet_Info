@@ -1,5 +1,7 @@
 package betaplusplus;
 
+import java.io.FileNotFoundException;
+import java.util.IllegalFormatException;
 import java.util.Scanner;
 
 
@@ -22,19 +24,35 @@ public class Pipopipette {
 					+ "java -jar pipopipette.jar -eval strategie strategie évalue les deux stratégies en paramètre de manière exacte en faisant commencer la première stratégie passée en paramètre et renvoie le nombre moyen de carrés complétés par la premièrestratégie.\n"
 					+ "java -jar pipopipette.jar -simul N strategie strategie évalue les deux stratégies en paramètre par simulation en lançant N parties et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons..\n");
 			break;
-		case "-graphe": ToDot<Grille> dot = new ToDot<Grille>(new Simplet());
+		case "-graphe":
+			ToDot<Grille> dot = new ToDot<Grille>(new Simplet());
 			switch(args[1]){
 			case "C" : System.out.println(dot.get(new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), true))); break;
 			case "S" : System.out.println(dot.get(new Grille(Integer.parseInt(args[2]), Integer.parseInt(args[3]), false))); break;
 			}
-		break;// a finir :S
+			break;
 		case "-joue":
 			switch (args[2]) {
-			case "-simplet": jeu(new Simplet(),args[1]); break;
-			case "-prevoyant": jeu(new Prevoyant(),args[1]); break;
-			case "-idiot": jeu(new Idiot(),args[1]); break;
-			case "-pondere": break;//TODO a finir :S
+			case "-simplet": jeu(new Simplet(),args[1],null); break;
+			case "-prevoyant": jeu(new Prevoyant(),args[1],null); break;
+			case "-idiot": jeu(new Idiot(),args[1],null); break;
+			case "-pondere": 
+				try {
+					jeu(new Pondere(new Poids(args[3])), args[1], args[3]);
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				;break;
 			}; break;
+			
+			
+			
+			
+			
 		case "-cal":
 			if (args[1].equals("-graphe")){
 				switch (args[2]){
@@ -47,7 +65,14 @@ public class Pipopipette {
 			}; break;
 		case "-apprend": System.out.println("Non finis1"); break;
 		case "-eval": System.out.println("Non finis2"); break;
-		case "-simul": boolean contours = false;
+		
+		
+		
+		
+		
+		
+		case "-simul":
+			boolean contours = false;
 			switch(args[3]){
 			case "C" : contours = true; break;
 			case "S" : contours = false; break;
@@ -58,58 +83,106 @@ public class Pipopipette {
 				case "-simplet": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Simplet())+" carré(s) complété(s)."); break;
 				case "-prevoyant": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Prevoyant())+" carré(s) complété(s)."); break;
 				case "-idiot": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Idiot())+" carré(s) complété(s)."); break;
-				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Simplet(),s2)); break;*/
-
+				case "-pondere": 
+					try {
+						System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}; break;
 			case "-prevoyant":
 				switch (args[6]) {
 				case "-simplet": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Simplet())+" carré(s) complété(s)."); break;
 				case "-prevoyant": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant())+" carré(s) complété(s)."); break;
 				case "-idiot": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())+" carré(s) complété(s)."); break;
-				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Prevoyant(),s2)); break;*/
-
+				case "-pondere": 
+					try {
+						System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}; break;
 			case "-idiot":
 				switch (args[6]) {
 				case "-simplet": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Simplet())+" carré(s) complété(s)."); break;
 				case "-prevoyant": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Prevoyant())+" carré(s) complété(s)."); break;
 				case "-idiot": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Idiot())+" carré(s) complété(s)."); break;
-				/*case "-pondere": System.out.println(Simulation.simulation(3,3,true,Integer.parseInt(args[1]),new Idiot(),s2)); break;*/
-
+				case "-pondere": 
+					try {
+						System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+					} catch (NumberFormatException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (FileNotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}; break;
 			case "-pondere":
-				switch (args[3]) {
-				/*case "-simplet": new simulation(3,3,true,Integer.parseInt(args[1]),s1,new Simplet()); break;
-				case "-prevoyant": new simulation(3,3,true,Integer.parseInt(args[1]),s1,new Prevoyant()); break;
-				case "-idiot": new simulation(3,3,true,Integer.parseInt(args[1]),s1,new Idiot()); break;
-				case "-pondere": new simulation(3,3,true,Integer.parseInt(args[1]),s1,s2); break;*/
-				}; break;
-			}; break;
+				try {
+					switch (args[6]) {
+					case "-simplet": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Simplet())+" carré(s) complété(s)."); break;
+					case "-prevoyant": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Prevoyant())+" carré(s) complété(s)."); break;
+					case "-idiot": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Idiot())+" carré(s) complété(s)."); break;
+					case "-pondere": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Pondere(new Poids(args[7])))+" carré(s) complété(s).");break;
+					}
+				} catch (NumberFormatException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				; break;
+			}
 		}
 	}
-
 	/**Lance la partie
 	 * @param ia le type de joueur adversaire (idiot, humain , simplet , pondere , prevoyant )
 	 * @param joueur Determine je premier joueur ( celui qui commence)
 	 */
-	public static void jeu(Fonction<Grille, Iterable<Grille>> ia, String joueur) {
+	public static void jeu(Fonction<Grille, Iterable<Grille>> ia, String joueur, String pip) {
 		Scanner sc = new Scanner(System.in);
 		Humain a = new Humain();
-		Partie c;
-		System.out.println("Hauteur de grille :");
-		int hauteur_de_grille = sc.nextInt();
-		System.out.println("Largeur de grille :");
-		int Largeur_de_grille = sc.nextInt();
-		System.out.println("Voulez vous des contours sur votre grille? : (true/false)");
-		String contours = sc.next();
-		if (Integer.parseInt(joueur) == 1){
-			c = new Partie(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours), a, ia);
+		Partie c = null;
+		if ((ia.getClass()).equals(Pondere.class)){
+			try {
+				c = c.fromPip(a,ia,joueur,pip);
+				c.nouvellePartie(true);
+			} catch (IllegalFormatException | NumberFormatException | FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}else{
-			c = new Partie(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours), ia, a);
+			System.out.println("Hauteur de grille :");
+			int hauteur_de_grille = sc.nextInt();
+			System.out.println("Largeur de grille :");
+			int Largeur_de_grille = sc.nextInt();
+			System.out.println("Voulez vous des contours sur votre grille? : (C/S)");
+			String contoursString = sc.next();
+			boolean contoursBool = false;
+			switch(contoursString){
+			case "C" : contoursBool = true; break;
+			case "S" : contoursBool = false; break;
+			}
+			if (Integer.parseInt(joueur) == 1){
+				c = new Partie(hauteur_de_grille, Largeur_de_grille, contoursBool, a, ia);
+			}else{
+				c = new Partie(hauteur_de_grille, Largeur_de_grille, contoursBool, ia, a);
+			}
+			c.nouvellePartie(true);
+			sc.close();	
 		}
-		c.nouvellePartie(true);
-		sc.close();
 	}
+
 	/**Configuration de la grille de jeu ( fonction interactive) 
 	 * @return une grille avec la configuration desiree
 	 */
@@ -119,7 +192,7 @@ public class Pipopipette {
 		int hauteur_de_grille = sc.nextInt();
 		System.out.println("Largeur de grille :");
 		int Largeur_de_grille = sc.nextInt();
-		System.out.println("Voulez vous des contours sur votre grille? : (true/false)");
+		System.out.println("Voulez vous des contours sur votre grille? : (C/S)");
 		String contours = sc.next();
 		sc.close();
 		return new Grille(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours));

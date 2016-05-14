@@ -33,7 +33,7 @@ public class Partie {
 	 * @throws NumberFormatException
 	 *             Si les donnees ne corespondent pas (?)
 	 */
-	public static Partie fromPip(Fonction<Grille, Iterable<Grille>> j1, String pip)
+	public static Partie fromPip(Fonction<Grille, Iterable<Grille>> j1, Fonction<Grille, Iterable<Grille>> j2, String joueur, String pip)
 			throws FileNotFoundException, IllegalFormatException, NumberFormatException {
 		BufferedReader br = new BufferedReader(new FileReader(pip));
 		String line;
@@ -57,8 +57,12 @@ public class Partie {
 			largeur = Integer.parseInt(st.nextToken());
 		} catch (IOException e) {
 		}
-
-		return new Partie(hauteur, largeur, type, j1, new Pondere(new Poids(pip)));
+		if (Integer.parseInt(joueur) == 1){
+			return new Partie(hauteur, largeur, type, j1, j2);
+		}else{
+			return new Partie(hauteur, largeur, type, j2, j1);
+		}
+	//	return new Partie(hauteur, largeur, type, j1, new Pondere(new Poids(pip)));
 
 	}
 
@@ -135,7 +139,6 @@ public class Partie {
 		while (!etape.isPlein()) {
 			if (bavard) {
 				if ((joueurs.get(j).getClass()).equals(Humain.class)) {
-
 					System.out.println("A vous de jouer");
 					System.out.println(etape);
 				} else {

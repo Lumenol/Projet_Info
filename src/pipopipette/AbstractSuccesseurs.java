@@ -7,6 +7,7 @@ public abstract class AbstractSuccesseurs<T> extends FonctionDynamique<T, Iterab
      */
     public AbstractSuccesseurs(Fonction<T, Iterable<T>> fonction) {
 	super(fonction);
+    
     }
 
 }

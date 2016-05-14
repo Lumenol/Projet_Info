@@ -8,7 +8,6 @@ public class NombreCarre extends FonctionDynamique<Grille, Integer> {
 	public NombreCarre() {
 		super(new Fonction<Grille, Integer>() {
 			/**Calcule le nombre de carres realises dans la grille x
-			 * (non-Javadoc)
 			 * 
 			 * @param x 
 			 *            grille

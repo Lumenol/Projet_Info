@@ -10,9 +10,9 @@ public class Humain implements Fonction<Grille, Iterable<Grille>> {
 
     }
 
-    /**
-     * @param z grille
-     * @return hashset contenant la grille jouee
+    /**Forme un jeu avec un joueur type Humain
+     * @param z grille d'origine
+     * @return hashset contenant la grille jouee par un joueur Humain
      *
      */
     @Override

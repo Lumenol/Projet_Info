@@ -19,9 +19,10 @@ public class Prevoyant extends AbstractSuccesseurs<Grille> {
 			private NombreCarre nbC = new NombreCarre();
 
 			/**
-			 * (non-Javadoc)
-			 * @return Liste chainee de coups joues par un joueur type prevoyant
+			 * Forme un jeu avec un joueur type Prevoyant
+			 * 
 			 * @param x grille d'origine
+			 * @return Liste chainee de coups joues par un joueur type prevoyant
 			 * @see betaplusplus.Fonction#get(java.lang.Object)
 			 */
 			@Override

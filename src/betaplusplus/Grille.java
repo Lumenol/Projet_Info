@@ -75,8 +75,9 @@ public class Grille implements Etat {
 	}
 
 	
-	/**
-	 * java doc objet ==
+	/**Fonction de comparaison
+	 * @param obj l'objet a comparer
+	 * @return true si obj est le meme obj que this
 	 * */
 	@Override
 	public boolean equals(Object obj) {
@@ -112,9 +113,9 @@ public class Grille implements Etat {
 		}
 	}
 
-	/*
-	 * jd1.8
-	 * (non-Javadoc) Fonction de hachage pour la grille incluant les rotations
+	/**
+	 * Fonction de hachage pour la grille en incluant les rotations
+	 * @return entier hash 
 	 */
 	@Override
 	public int hashCode() {
@@ -192,8 +193,11 @@ public class Grille implements Etat {
 		}
 	}
 
-	/* (non-Javadoc)
+	/**
+	 * 
+	 * 
 	 * @see java.lang.Object#toString()
+	 * @return 
 	 */
 	public String toString() {
 		return toString(false);

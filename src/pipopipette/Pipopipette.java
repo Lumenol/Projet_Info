@@ -22,7 +22,7 @@ public class Pipopipette {
 					+ "java -jar pipopipette.jar -name affiche vos noms et prenoms\n"
 					+ "java -jar pipopipette.jar -h rappelle la liste des options du programme\n"
 					+ "java -jar pipopipette.jar -graphe type nblignes nbcolonnes renvoie le graphe des configurations reduit au format dot.\n"
-					+ "java -jar pipopipette.jar -joue joueur strategie offre la possibilite de jouer sur la console de maniere interactive. Le parametre joueur vaut soit 1 ou 2 : 1 indique que l'humain commence, 2 que c'est l'ordinateur. Les valeurs possibles de strategie sont donnees dans la partie « Strategies elementaires »\n"
+					+ "java -jar pipopipette.jar -joue joueur strategie offre la possibilite de jouer sur la console de maniere interactive. Le parametre joueur vaut soit 1 ou 2 : 1 indique que l'humain commence, 2 que c'est l'ordinateur. Les valeurs possibles de strategie sont donnees dans la partie ï¿½ Strategies elementaires ï¿½\n"
 					+ "java -jar pipopipette.jar -cal strategie calcule une strategie optimum face a un joueur suivant la strategie passee en parametre. La commande renvoie le resultat au format pip (voir l'exemple simple C3x3.pip)\n"
 					+ "java -jar pipopipette.jar -cal -graphe strategie calcule une strategie optimum face un joueur suivant la strategie passee en parametre. La commande renvoie le resultat le graphe reduit au format dot et la ponderation des configurations definissant la strategie calculee.\n"
 					+ "java -jar pipopipette.jar -apprend N alpha gready strategie calcule une strategie par une methode d'apprentissage en faisant en sorte que l'apprenti et le stratege commencent chacun leur tour. Les parametres de l'apprentissage sont : N est le nombre de parties, alpha est le taux d'apprentissage (compris en 0 et 1), gready vaut 1 si la technique du epsilon-gready est utilise sinon il vaut 1.\n"
@@ -161,7 +161,7 @@ public class Pipopipette {
 		if ((ia.getClass()).equals(Pondere.class)){
 			try {
 				c = c.fromPip(a,ia,joueur,pip);
-				c.nouvellePartie(true);
+				c.nouvellePartie(true,Integer.parseInt(joueur));
 			} catch (IllegalFormatException | NumberFormatException | FileNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -183,7 +183,7 @@ public class Pipopipette {
 			}else{
 				c = new Partie(hauteur_de_grille, Largeur_de_grille, contoursBool, ia, a);
 			}
-			c.nouvellePartie(true);
+			c.nouvellePartie(true,Integer.parseInt(joueur));
 			sc.close();	
 		}
 	}

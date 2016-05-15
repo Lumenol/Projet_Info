@@ -129,8 +129,12 @@ public class Partie {
 	 * @param bavard
 	 *            Parametre qui enclenche l'impression des etapes successives de
 	 *            la partie, et declenche l'interaction joueur-jeu
+	 *            
+	 *            
+	 * @param joueur
+	 * 			  Parametre qui indique qui commence
 	 */
-	public void nouvellePartie(boolean bavard) {
+	public void nouvellePartie(boolean bavard, int joueur) {
 		points.set(0, 0);
 		points.set(1, 0);
 		Grille etape = racine;
@@ -160,9 +164,17 @@ public class Partie {
 				System.out.println(etape);
 
 				if ((joueurs.get(j).getClass()).equals(Humain.class)) {
-					System.out.println("Vous avez " + points.get(0) + " points\nL'IA a " + points.get(1) + " points\n");
+					if (joueur==1){
+						System.out.println("Vous avez " + points.get(0) + " points\nL'IA a " + points.get(1) + " points\n");
+					}else{
+						System.out.println("Vous avez " + points.get(1) + " points\nL'IA a " + points.get(0) + " points\n");
+					}
 				} else {
-					System.out.println("Vous avez " + points.get(1) + " points\nL'IA a " + points.get(0) + " points\n");
+					if (joueur==1){
+						System.out.println("Vous avez " + points.get(1) + " points\nL'IA a " + points.get(0) + " points\n");	
+					}else{
+						System.out.println("Vous avez " + points.get(0) + " points\nL'IA a " + points.get(1) + " points\n");
+					}
 				}
 			}
 		}

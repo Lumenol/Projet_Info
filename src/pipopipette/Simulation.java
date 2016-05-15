@@ -21,7 +21,7 @@ public class Simulation {
 		Partie p = new Partie(hauteur, largeur, contours, j1, j2);
 		float somme = 0;
 		for (int i = 0; i < n; i++) {
-			p.nouvellePartie(false);
+			p.nouvellePartie(false,1);
 			somme += p.getPoints(0);
 		}
 		return somme / n;

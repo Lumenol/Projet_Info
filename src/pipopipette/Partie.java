@@ -171,9 +171,9 @@ public class Partie {
 					}
 				} else {
 					if (joueur==1){
-						System.out.println("Vous avez " + points.get(1) + " points\nL'IA a " + points.get(0) + " points\n");	
+						System.out.println("Vous avez " + points.get(0) + " points\nL'IA a " + points.get(1) + " points\n");	
 					}else{
-						System.out.println("Vous avez " + points.get(0) + " points\nL'IA a " + points.get(1) + " points\n");
+						System.out.println("Vous avez " + points.get(1) + " points\nL'IA a " + points.get(0) + " points\n");
 					}
 				}
 			}

@@ -1,8 +1,13 @@
 package pipopipette;
 
+import java.io.BufferedReader;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.IllegalFormatException;
+import java.util.IllegalFormatFlagsException;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 
 
@@ -63,8 +68,8 @@ public class Pipopipette {
 			}else{
 				System.out.println("");
 			}; break;
-		case "-apprend": System.out.println("Non finis1"); break;
-		case "-eval": System.out.println("Non finis2"); break;
+		case "-apprend": System.out.println("Non fait"); break;
+		case "-eval": System.out.println("Non fait"); break;
 		
 		
 		
@@ -85,7 +90,7 @@ public class Pipopipette {
 				case "-idiot": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Idiot())+" carré(s) complété(s)."); break;
 				case "-pondere": 
 					try {
-						System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+						System.out.println("Le joueur simplet a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Simplet(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -101,7 +106,7 @@ public class Pipopipette {
 				case "-idiot": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())+" carré(s) complété(s)."); break;
 				case "-pondere": 
 					try {
-						System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+						System.out.println("Le joueur prevoyant a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Prevoyant(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -117,7 +122,7 @@ public class Pipopipette {
 				case "-idiot": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Idiot())+" carré(s) complété(s)."); break;
 				case "-pondere": 
 					try {
-						System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+						System.out.println("Le joueur idiot a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Idiot(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -128,11 +133,11 @@ public class Pipopipette {
 				}; break;
 			case "-pondere":
 				try {
-					switch (args[6]) {
-					case "-simplet": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Simplet())+" carré(s) complété(s)."); break;
-					case "-prevoyant": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Prevoyant())+" carré(s) complété(s)."); break;
-					case "-idiot": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Idiot())+" carré(s) complété(s)."); break;
-					case "-pondere": System.out.println("Le joueur pondere a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Pondere(new Poids(args[7])),new Pondere(new Poids(args[7])))+" carré(s) complété(s).");break;
+					switch (args[4]) {
+					case "-simplet": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Simplet())+" carré(s) complété(s)."); break;
+					case "-prevoyant": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Prevoyant())+" carré(s) complété(s)."); break;
+					case "-idiot": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Idiot())+" carré(s) complété(s)."); break;
+					case "-pondere": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Pondere(new Poids(args[5])))+" carré(s) complété(s).");break;
 					}
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
@@ -198,4 +203,39 @@ public class Pipopipette {
 		return new Grille(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours));
 	}
 
+	public static boolean typePoids(String pip) throws FileNotFoundException, NumberFormatException {
+		BufferedReader br = new BufferedReader(new FileReader(pip));
+		try{
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			switch (st.nextToken()) {
+			case "S": return false; 
+			case "C": return true; 
+			default: throw new IllegalFormatFlagsException("Le type est incorect");
+			}
+		}catch (IOException e) {
+		}
+		return false;
+	}
+	public static int hauteurPoids(String pip) throws FileNotFoundException, NumberFormatException {
+		BufferedReader br = new BufferedReader(new FileReader(pip));
+		try{
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			st.nextToken();
+			return Integer.parseInt(st.nextToken());
+		}catch (IOException e) {
+		}
+		return 0;
+	}
+	public static int largeurPoids(String pip) throws FileNotFoundException, NumberFormatException {
+		BufferedReader br = new BufferedReader(new FileReader(pip));
+		try{
+			StringTokenizer st = new StringTokenizer(br.readLine());
+			st.nextToken();
+			st.nextToken();
+			return Integer.parseInt(st.nextToken());
+		}catch (IOException e) {
+		}
+		return 0;
+	}
+	
 }

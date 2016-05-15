@@ -3,11 +3,7 @@ package pipopipette;
 import java.util.HashSet;
 import java.util.Iterator;
 
-/**
- *
- *
- * @param <T>
- */
+
 public class ToDot<T extends Etat> implements Fonction<T, String> {
 
     private Fonction<T, Iterable<T>> succ;
@@ -15,16 +11,16 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     private Fonction<Etat, Integer> id;
     private HashSet<Etat> visite;
 
-    /**
-     * @param succ
+    /**Constructeur ToDot
+     * @param succ Successeur
      */
     public ToDot(Fonction<T, Iterable<T>> succ) {
 	this(succ, null);
     }
 
     /**
-     * @param succ
-     * @param points
+     * @param succ Successeur
+     * @param points 
      *            Associe une nombre a n etat comme le poids par exemple
      */
     public ToDot(Fonction<T, Iterable<T>> succ, Fonction<T, ? extends Number> points) {
@@ -46,8 +42,8 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     /**
      * Retourne tout les successeur d'un etat au format dot
      * 
-     * @param x
-     * @return
+     * @param x Etat
+     * @return Successeurs de l'etat (en dot)
      */
     @Override
     public String get(T x) {

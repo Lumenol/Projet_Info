@@ -11,7 +11,7 @@ public class Pipopipette {
 
 	public static void main(String[] args) {
 		switch (args[0]) {
-		case "-name": System.out.println("Roche Julie\nCrédevlle Louis-Maxime\nVincent Renard\nBovie Pierre-Edouard\n"); break;
+		case "-name": System.out.println("Roche Julie\nCredevlle Louis-Maxime\nVincent Renard\nBovie Pierre-Edouard\n"); break;
 		case "-h":
 			System.out.println("Rappelle de la liste des options du programme:\n"
 					+ "java -jar pipopipette.jar -name affiche vos noms et prénoms\n"

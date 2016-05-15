@@ -11,9 +11,6 @@ import java.util.Iterator;
 import java.util.Random;
 import java.util.StringTokenizer;
 
-/**
- *
- */
 public class Partie {
 
 	/**
@@ -21,20 +18,25 @@ public class Partie {
 	 * joueur
 	 *
 	 * @param j1
-	 *            Type de joueur (idiot, humain , simplet , pondere , prevoyant
-	 *            )
+	 *            Type de joueur (idiot, humain , simplet , pondere , prevoyant)
+	 * @param j2
+	 *            Joueur pondere
+	 * 
 	 * @param pip
 	 *            nom du fichier
-	 * @return nouvelle partie selon le type de joueur
+	 * @param joueur Nombre de joueurs
+	 * 
 	 * @throws FileNotFoundException
 	 *             Si le fichier pip n'est pas present
 	 * @throws IllegalFormatException
 	 *             Si le fichier n'est pas en .pip
 	 * @throws NumberFormatException
 	 *             Si les donnees ne corespondent pas (?)
+	 * @return nouvelle partie selon le type de joueur
 	 */
-	public static Partie fromPip(Fonction<Grille, Iterable<Grille>> j1, Fonction<Grille, Iterable<Grille>> j2, String joueur, String pip)
-			throws FileNotFoundException, IllegalFormatException, NumberFormatException {
+	
+	public static Partie fromPip(Fonction<Grille, Iterable<Grille>> j1, Fonction<Grille, Iterable<Grille>> j2,
+			String joueur, String pip) throws FileNotFoundException, IllegalFormatException, NumberFormatException {
 		BufferedReader br = new BufferedReader(new FileReader(pip));
 		String line;
 		boolean type = false;
@@ -57,12 +59,13 @@ public class Partie {
 			largeur = Integer.parseInt(st.nextToken());
 		} catch (IOException e) {
 		}
-		if (Integer.parseInt(joueur) == 1){
+		if (Integer.parseInt(joueur) == 1) {
 			return new Partie(hauteur, largeur, type, j1, j2);
-		}else{
+		} else {
 			return new Partie(hauteur, largeur, type, j2, j1);
 		}
-	//	return new Partie(hauteur, largeur, type, j1, new Pondere(new Poids(pip)));
+		// return new Partie(hauteur, largeur, type, j1, new Pondere(new
+		// Poids(pip)));
 
 	}
 

@@ -24,7 +24,7 @@ public class Poids extends FonctionDynamique<Grille, Integer> {
 		super(new Fonction<Grille, Integer>() {
 
 			/**
-			 * @return Array list d' etats avec leur poids assicocies
+			 * @return Array list d'etats avec leur poids associes
 			 * @param x
 			 *            grille
 			 * @see pipopipette.Fonction#get(java.lang.Object)
@@ -43,7 +43,7 @@ public class Poids extends FonctionDynamique<Grille, Integer> {
 		try {
 			StringTokenizer st = new StringTokenizer(br.readLine());
 			if (st.countTokens() != 3)
-				throw new IllegalFormatFlagsException("Il manque des information");
+				throw new IllegalFormatFlagsException("Il manque des informations");
 			switch (st.nextToken()) {
 			case "S":
 				type = false;
@@ -52,7 +52,7 @@ public class Poids extends FonctionDynamique<Grille, Integer> {
 				type = true;
 				break;
 			default:
-				throw new IllegalFormatFlagsException("Le type est incorect");
+				throw new IllegalFormatFlagsException("Le type est incorrect");
 			}
 			hauteur = Integer.parseInt(st.nextToken());
 			largeur = Integer.parseInt(st.nextToken());

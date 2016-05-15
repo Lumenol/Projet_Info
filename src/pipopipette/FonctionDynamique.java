@@ -22,7 +22,7 @@ public class FonctionDynamique<E, F> implements Fonction<E, F> {
 	 * Constructeur de l'objet
 	 * 
 	 * @param fonction
-	 *            Implement la fonction passée en parametre dans l'objet
+	 *            Implemente la fonction passee en parametre dans l'objet
 	 */
 	public FonctionDynamique(Fonction<E, F> fonction) {
 		this.fonction = fonction;

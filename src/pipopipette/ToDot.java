@@ -21,7 +21,7 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     /**
      * @param succ Successeur
      * @param points 
-     *            Associe une nombre a n etat comme le poids par exemple
+     *            Associe un nombre a un etat comme le poids par exemple
      */
     public ToDot(Fonction<T, Iterable<T>> succ, Fonction<T, ? extends Number> points) {
 	super();
@@ -40,7 +40,7 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     }
 
     /**
-     * Retourne tout les successeur d'un etat au format dot
+     * Retourne tous les successeurs d'un etat au format dot
      * 
      * @param x Etat
      * @return Successeurs de l'etat (en dot)
@@ -59,16 +59,15 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
     }
 
     /**
-     * Ecrit l'etat au format dot avec les arc vers ses successeur
+     * Ecrit l'etat au format dot avec les arcs vers ses successeurs
      *
      * @param x
      *            Etat
-     * @return chaine de Etat au format dot
+     * @return chaine d'Etat au format dot
      */
     private String dot(T x) {
 	if (!visite.contains(x)) {
 	    StringBuffer sb = new StringBuffer(id.get(x).toString());
-	    // inserer representation
 	    sb.append(" [ label= \"");
 	    if (points != null)
 		sb.append("V=" + points.get(x) + "\\n");
@@ -76,7 +75,6 @@ public class ToDot<T extends Etat> implements Fonction<T, String> {
 	    for (Iterator<T> iterator = succ.get(x).iterator(); iterator.hasNext();) {
 		T fil = iterator.next();
 		sb.append(dot(fil));
-		// inserer ornement arc ici
 		sb.append(id.get(x) + " -> " + id.get(fil) + "\n");
 	    }
 	    visite.add(x);

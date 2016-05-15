@@ -24,14 +24,14 @@ public class Partie {
 	 * 
 	 * @param pip
 	 *            nom du fichier
-	 * @param joueur Nombre de joueurs
+	 * @param joueur determine qui commence en premier
 	 * 
 	 * @throws FileNotFoundException
 	 *             Si le fichier pip n'est pas present
 	 * @throws IllegalFormatException
 	 *             Si le fichier n'est pas en .pip
 	 * @throws NumberFormatException
-	 *             Si les donnees ne corespondent pas (?)
+	 *             Si les donnees ne corespondent pas
 	 * @return nouvelle partie selon le type de joueur
 	 */
 	
@@ -64,8 +64,6 @@ public class Partie {
 		} else {
 			return new Partie(hauteur, largeur, type, j2, j1);
 		}
-		// return new Partie(hauteur, largeur, type, j1, new Pondere(new
-		// Poids(pip)));
 
 	}
 
@@ -83,11 +81,11 @@ public class Partie {
 	 * @param largeur
 	 *            largeur de la grille
 	 * @param contours
-	 *            affichage des contours (ou pas)
+	 *            choix de l'affichage ou non des contours
 	 * @param j1
-	 *            Joueur 1
+	 *            type de Joueur 1
 	 * @param j2
-	 *            Joueur 2
+	 *            type de Joueur 2
 	 */
 	public Partie(int hauteur, int largeur, boolean contours, Fonction<Grille, Iterable<Grille>> j1,
 			Fonction<Grille, Iterable<Grille>> j2) {
@@ -173,13 +171,13 @@ public class Partie {
 				if (points.get(1) > points.get(0)) {
 					System.out.println("L'IA gagne!");
 				} else {
-					System.out.println("Vous avez gagné!");
+					System.out.println("Vous avez gagne!");
 				}
 			} else {
 				if (points.get(0) > points.get(1)) {
 					System.out.println("L'IA gagne!");
 				} else {
-					System.out.println("Vous avez gagné!");
+					System.out.println("Vous avez gagne!");
 				}
 			}
 		}

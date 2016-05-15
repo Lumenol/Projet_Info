@@ -18,16 +18,16 @@ public class Pipopipette {
 		switch (args[0]) {
 		case "-name": System.out.println("Roche Julie\nCredevlle Louis-Maxime\nVincent Renard\nBovie Pierre-Edouard\n"); break;
 		case "-h":
-			System.out.println("Rappelle de la liste des options du programme:\n"
-					+ "java -jar pipopipette.jar -name affiche vos noms et prénoms\n"
+			System.out.println("Rappel de la liste des options du programme:\n"
+					+ "java -jar pipopipette.jar -name affiche vos noms et prenoms\n"
 					+ "java -jar pipopipette.jar -h rappelle la liste des options du programme\n"
-					+ "java -jar pipopipette.jar –graphe type nblignes nbcolonnes renvoie le graphe des configurations réduit au format dot.\n"
-					+ "java -jar pipopipette.jar –joue joueur strategie offre la possibilité de jouer sur la console de manière interactive. Le paramètre joueur vaut soit 1 ou 2 : 1 indique que l’humain commence, 2 que c’est l’ordinateur. Les valeurs possibles de strategie sont donnés dans la partie « Stratégies élémentaires »\n"
-					+ "java -jar pipopipette.jar -cal strategie calcule une stratégie optimum face à un joueur suivant la stratégie passée en paramètre. La commande renvoie le résultat au format pip (voir l’exemple simple C3x3.pip)\n"
-					+ "java -jar pipopipette.jar –cal -graphe strategie calcule une stratégie optimum face un joueur suivant la stratégie passée en paramètre. La commande renvoie le résultat le graphe réduit au format dot et la pondération des configurations définissant la stratégie calculée.\n"
-					+ "java -jar pipopipette.jar -apprend N alpha gready strategie calcule une stratégie par une méthode d’apprentissage en faisant en sorte que l’apprenti et le stratège commence chacun leur tour. Les paramètres de l’apprentissage sont : N est le nombre de parties, alpha est le taux d’apprentissage (compris en 0 et 1), gready vaut 1 si la technique du ε-gready est utilisé sinon il vaut 1.\n"
-					+ "java -jar pipopipette.jar -eval strategie strategie évalue les deux stratégies en paramètre de manière exacte en faisant commencer la première stratégie passée en paramètre et renvoie le nombre moyen de carrés complétés par la premièrestratégie.\n"
-					+ "java -jar pipopipette.jar -simul N strategie strategie évalue les deux stratégies en paramètre par simulation en lançant N parties et une table des probabilités de tous les scores possibles. Le résultat est un script gnuplot donnant le résultat sous la forme d’un diagramme en batons..\n");
+					+ "java -jar pipopipette.jar -graphe type nblignes nbcolonnes renvoie le graphe des configurations reduit au format dot.\n"
+					+ "java -jar pipopipette.jar -joue joueur strategie offre la possibilite de jouer sur la console de maniere interactive. Le parametre joueur vaut soit 1 ou 2 : 1 indique que l'humain commence, 2 que c'est l'ordinateur. Les valeurs possibles de strategie sont donnees dans la partie � Strategies elementaires �\n"
+					+ "java -jar pipopipette.jar -cal strategie calcule une strategie optimum face a un joueur suivant la strategie passee en parametre. La commande renvoie le resultat au format pip (voir l'exemple simple C3x3.pip)\n"
+					+ "java -jar pipopipette.jar -cal -graphe strategie calcule une strategie optimum face un joueur suivant la strategie passee en parametre. La commande renvoie le resultat le graphe reduit au format dot et la ponderation des configurations definissant la strategie calculee.\n"
+					+ "java -jar pipopipette.jar -apprend N alpha gready strategie calcule une strategie par une methode d'apprentissage en faisant en sorte que l'apprenti et le stratege commencent chacun leur tour. Les parametres de l'apprentissage sont : N est le nombre de parties, alpha est le taux d'apprentissage (compris en 0 et 1), gready vaut 1 si la technique du epsilon-gready est utilise sinon il vaut 1.\n"
+					+ "java -jar pipopipette.jar -eval strategie strategie evalue les deux strategies en parametre de maniere exacte en faisant commencer la premiere strategie passee en parametre et renvoie le nombre moyen de carres completes par la premiere strategie.\n"
+					+ "java -jar pipopipette.jar -simul N strategie strategie evalue les deux strategies en parametre par simulation en lancant N parties et une table des probabilites de tous les scores possibles. Le resultat est un script gnuplot donnant le resultat sous la forme d'un diagramme en batons..\n");
 			break;
 		case "-graphe":
 			ToDot<Grille> dot = new ToDot<Grille>(new Simplet());
@@ -85,12 +85,12 @@ public class Pipopipette {
 			switch (args[2]) {
 			case "-simplet":
 				switch (args[6]) {
-				case "-simplet": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Simplet())+" carré(s) complété(s)."); break;
-				case "-prevoyant": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Prevoyant())+" carré(s) complété(s)."); break;
-				case "-idiot": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Idiot())+" carré(s) complété(s)."); break;
+				case "-simplet": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Simplet())+" carre(s) complete(s)."); break;
+				case "-prevoyant": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Prevoyant())+" carre(s) complete(s)."); break;
+				case "-idiot": System.out.println("Le joueur simplet a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Simplet(),new Idiot())+" carre(s) complete(s)."); break;
 				case "-pondere": 
 					try {
-						System.out.println("Le joueur simplet a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Simplet(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+						System.out.println("Le joueur simplet a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Simplet(),new Pondere(new Poids(args[7])))+" carre(s) complete(s)."); break;
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -101,12 +101,12 @@ public class Pipopipette {
 				}; break;
 			case "-prevoyant":
 				switch (args[6]) {
-				case "-simplet": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Simplet())+" carré(s) complété(s)."); break;
-				case "-prevoyant": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant())+" carré(s) complété(s)."); break;
-				case "-idiot": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())+" carré(s) complété(s)."); break;
+				case "-simplet": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Simplet())+" carre(s) complete(s)."); break;
+				case "-prevoyant": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Prevoyant())+" carre(s) complete(s)."); break;
+				case "-idiot": System.out.println("Le joueur prevoyant a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Prevoyant(),new Idiot())+" carre(s) complete(s)."); break;
 				case "-pondere": 
 					try {
-						System.out.println("Le joueur prevoyant a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Prevoyant(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+						System.out.println("Le joueur prevoyant a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Prevoyant(),new Pondere(new Poids(args[7])))+" carre(s) complete(s)."); break;
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -117,12 +117,12 @@ public class Pipopipette {
 				}; break;
 			case "-idiot":
 				switch (args[6]) {
-				case "-simplet": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Simplet())+" carré(s) complété(s)."); break;
-				case "-prevoyant": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Prevoyant())+" carré(s) complété(s)."); break;
-				case "-idiot": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Idiot())+" carré(s) complété(s)."); break;
+				case "-simplet": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Simplet())+" carre(s) complete(s)."); break;
+				case "-prevoyant": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Prevoyant())+" carre(s) complete(s)."); break;
+				case "-idiot": System.out.println("Le joueur idiot a "+Simulation.simulation(Integer.parseInt(args[4]),Integer.parseInt(args[5]),contours,Integer.parseInt(args[1]),new Idiot(),new Idiot())+" carre(s) complete(s)."); break;
 				case "-pondere": 
 					try {
-						System.out.println("Le joueur idiot a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Idiot(),new Pondere(new Poids(args[7])))+" carré(s) complété(s)."); break;
+						System.out.println("Le joueur idiot a "+Simulation.simulation(hauteurPoids(args[7]),largeurPoids(args[7]),typePoids(args[7]),Integer.parseInt(args[1]),new Idiot(),new Pondere(new Poids(args[7])))+" carre(s) complete(s)."); break;
 					} catch (NumberFormatException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -134,10 +134,10 @@ public class Pipopipette {
 			case "-pondere":
 				try {
 					switch (args[4]) {
-					case "-simplet": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Simplet())+" carré(s) complété(s)."); break;
-					case "-prevoyant": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Prevoyant())+" carré(s) complété(s)."); break;
-					case "-idiot": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Idiot())+" carré(s) complété(s)."); break;
-					case "-pondere": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Pondere(new Poids(args[5])))+" carré(s) complété(s).");break;
+					case "-simplet": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Simplet())+" carre(s) complete(s)."); break;
+					case "-prevoyant": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Prevoyant())+" carre(s) complete(s)."); break;
+					case "-idiot": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Idiot())+" carre(s) complete(s)."); break;
+					case "-pondere": System.out.println("Le joueur pondere a "+Simulation.simulation(hauteurPoids(args[3]),largeurPoids(args[3]),typePoids(args[3]),Integer.parseInt(args[1]),new Pondere(new Poids(args[3])),new Pondere(new Poids(args[5])))+" carre(s) complete(s).");break;
 					}
 				} catch (NumberFormatException e) {
 					// TODO Auto-generated catch block
@@ -152,7 +152,7 @@ public class Pipopipette {
 	}
 	/**Lance la partie
 	 * @param ia le type de joueur adversaire (idiot, humain , simplet , pondere , prevoyant )
-	 * @param joueur Determine je premier joueur ( celui qui commence)
+	 * @param joueur Determine le premier joueur 
 	 */
 	public static void jeu(Fonction<Grille, Iterable<Grille>> ia, String joueur, String pip) {
 		Scanner sc = new Scanner(System.in);
@@ -171,7 +171,7 @@ public class Pipopipette {
 			int hauteur_de_grille = sc.nextInt();
 			System.out.println("Largeur de grille :");
 			int Largeur_de_grille = sc.nextInt();
-			System.out.println("Voulez vous des contours sur votre grille? : (C/S)");
+			System.out.println("Voulez vous des contours sur votre grille ? : (C/S)");
 			String contoursString = sc.next();
 			boolean contoursBool = false;
 			switch(contoursString){
@@ -197,7 +197,7 @@ public class Pipopipette {
 		int hauteur_de_grille = sc.nextInt();
 		System.out.println("Largeur de grille :");
 		int Largeur_de_grille = sc.nextInt();
-		System.out.println("Voulez vous des contours sur votre grille? : (C/S)");
+		System.out.println("Voulez vous des contours sur votre grille ? : (C/S)");
 		String contours = sc.next();
 		sc.close();
 		return new Grille(hauteur_de_grille, Largeur_de_grille, Boolean.parseBoolean(contours));

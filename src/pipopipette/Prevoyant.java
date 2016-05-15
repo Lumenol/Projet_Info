@@ -22,7 +22,7 @@ public class Prevoyant extends AbstractSuccesseurs<Grille> {
 			 * Forme un jeu avec un joueur type Prevoyant
 			 * 
 			 * @param x grille d'origine
-			 * @return Liste chainee de coups joues par un joueur type prevoyant
+			 * @return Liste chainee de coups joues par un joueur de type prevoyant
 			 * @see pipopipette.Fonction#get(java.lang.Object)
 			 */
 			@Override

@@ -15,9 +15,9 @@ public class Idiot extends AbstractSuccesseurs<Grille> {
 			private NombreCarre nbC = new NombreCarre();
 
 			/**
-			 * Forme un jeu avec un joueur type Idiot
+			 * Forme un jeu avec un joueur de type Idiot
 			 * @param x grille orgine
-			 * @return La liste chainee de coups successifs joues par un joueur idiot
+			 * @return La liste chainee de coups successifs joues par un joueur Idiot
 			 * (non-Javadoc)
 			 * 
 			 * @see pipopipette.Fonction#get(java.lang.Object)

@@ -23,24 +23,24 @@ public class Grille implements Etat {
 	/**
 	 * Constructeur de l'objet Grille
 	 * 
-	 * @param hauteur la largeur de la grille
+	 * @param hauteur la hauteur de la grille
 	 * @param largeur la largeur de la grille
 	 * @param contours
-	 *            affichage des contours (ou pas)
+	 *            choix de l'affichage des contours
 	 */
 	public Grille(int hauteur, int largeur, boolean contours) {
 		this(hauteur, largeur, contours, null);
 	}
 
 	/**
-	 * Contruit la Grille suivant les parametres passes
+	 * Construit la Grille suivant les parametres passes
 	 * 
 	 * @param hauteur
-	 *            determine C
+	 *            determine la hauteur de la grille
 	 * @param largeur
 	 *            determine la largeur de la grille
 	 * @param contours
-	 *            affichage des contours (ou pas)
+	 *            determine l'affichage ou non des contours
 	 * @param t
 	 *            La grille
 	 * 
@@ -77,7 +77,7 @@ public class Grille implements Etat {
 	
 	/**Fonction de comparaison
 	 * @param obj l'objet a comparer
-	 * @return true si obj est le meme obj que this
+	 * @return true si l'objet appelant est le meme que celui passe en parametre
 	 * */
 	@Override
 	public boolean equals(Object obj) {
@@ -99,9 +99,9 @@ public class Grille implements Etat {
 
 	/**
 	 * @param x
-	 *            coord h
+	 *            coordonnee horizontale
 	 * @param y
-	 *            coord v
+	 *            coordonnee verticale
 	 * @return valeur de la grille aux coordonnees x y (vide / jouer )/ bloque
 	 *         si innaccessible
 	 */
@@ -114,7 +114,7 @@ public class Grille implements Etat {
 	}
 
 	/**
-	 * Fonction de hachage pour la grille en incluant les rotations
+	 * Fonction de hachage pour la grille en incluant les rotations et les symetries
 	 * @return entier hash 
 	 */
 	@Override
@@ -138,7 +138,7 @@ public class Grille implements Etat {
 
 	}
 
-	/**Determine la grille pleine
+	/**Determine si la grille pleine
 	 * @return Faux si au moins une case de la grille est vide
 	 */
 	public boolean isPlein() {
@@ -159,7 +159,7 @@ public class Grille implements Etat {
 	}
 
 	/**Getter de largeur
-	 * @return La valeur de Largeur
+	 * @return la largeur de la grille
 	 */
 	public int largeur() {
 		return grille[hauteur() - 1].length;
@@ -168,9 +168,9 @@ public class Grille implements Etat {
 
 	/**Place JOUER  aux coordonnees x,y
 	 * @param x
-	 *            Coordonnee h
+	 *            Coordonnee horizontale
 	 * @param y
-	 *            Coordonnee v
+	 *            Coordonnee verticale
 	 * 
 	 */
 	public void placer(int x, int y) {
@@ -207,9 +207,9 @@ public class Grille implements Etat {
 	 * Determine si un carre est ferme aux coordonnees passees
 	 * 
 	 * @param x
-	 *            Coord H
+	 *            Coordonnee horizontale
 	 * @param y
-	 *            Coord V
+	 *            Coordonnee verticale
 	 * @return True si un carre est ferme sur les coordonnees x y / False
 	 */
 	private boolean carreComplet(int x, int y) {
@@ -253,7 +253,7 @@ public class Grille implements Etat {
 	/**
 	 * @param t
 	 *            grille
-	 * @return La grille t en symetrique centrale
+	 * @return La grille t en symetrique axiale
 	 */
 	private int[][] symetrique(int[][] t) {
 		int[][] t2 = new int[t.length][t[t.length - 1].length];

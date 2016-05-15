@@ -15,11 +15,11 @@ public class Simplet extends AbstractSuccesseurs<Grille> {
 		super(new Fonction<Grille, Iterable<Grille>>() {
 
 			/**
-			 * Forme un jeu avec un joueur type Simplet
+			 * Forme un jeu avec un joueur type de Simplet
 			 * 
 			 * @param x grille d'origine
 			 * @see pipopipette.Fonction#get(java.lang.Object)
-			 * @return Hashset de coups successifs joues par un joueur type simplet
+			 * @return Hashset de coups successifs joues par un joueur de type simplet
 			 */
 			@Override
 			public Iterable<Grille> get(Grille x) {

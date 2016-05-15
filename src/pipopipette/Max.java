@@ -24,7 +24,7 @@ public class Max<T> implements Fonction<T, Float> {
 	 * Constructeur de l'objet Max
 	 *
 	 * @param successeurs les successeurs
-	 * @param nombreCarre fonction nbCarre
+	 * @param nombreCarre fonction nombreCarre
 	 * @param V2
 	 */
 	public Max(Fonction<T, Iterable<T>> successeurs, Fonction<T, Integer> nombreCarre, Fonction<T, Float> V2) {
@@ -59,7 +59,7 @@ public class Max<T> implements Fonction<T, Float> {
 	}
 
 	/**
-	 * @param V2 (?)
+	 * @param V2 
 	 */
 	public void setV2(Fonction<T, Float> V2) {
 		v2 = V2;
